@@ -1,0 +1,1 @@
+pyuic6 launchframe.ui -o launchframe.py

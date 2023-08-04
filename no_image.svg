@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="/home/sandrine-remy/Quentin/Netroot/D.A./no_image.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="no_image.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:snap-page="true"
+     inkscape:zoom="0.99621095"
+     inkscape:cx="77.794768"
+     inkscape:cy="265.00411"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#717171;stroke:#2f00ff;stroke-width:0;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       id="rect868"
+       width="512"
+       height="512"
+       x="0"
+       y="0"
+       ry="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Calque 2">
+    <path
+       sodipodi:type="spiral"
+       style="fill:none;fill-rule:evenodd;stroke:#3c3c3c;stroke-width:60.70000076;stroke-miterlimit:4;stroke-dasharray:242.80000305, 121.40000153, 60.70000076, 121.40000153;stroke-opacity:1;stroke-dashoffset:0"
+       id="path58200"
+       sodipodi:cx="233.52303"
+       sodipodi:cy="230.71887"
+       sodipodi:expansion="1"
+       sodipodi:revolution="3"
+       sodipodi:radius="305.1301"
+       sodipodi:argument="-16.467863"
+       sodipodi:t0="0"
+       d="m 233.52303,230.71887 c -11.09014,10.53852 -19.6772,-9.74994 -17.51571,-18.43253 5.85748,-23.52927 36.26419,-26.56027 54.38076,-16.59889 32.4063,17.81858 35.12881,62.0128 15.68207,90.32901 -28.53886,41.55516 -88.11449,43.96176 -126.27724,14.76525 -50.86494,-38.91435 -52.908,-114.34202 -13.84843,-162.22548 49.15248,-60.256454 140.62963,-61.912979 198.17372,-12.93161 69.69359,59.323 70.95198,166.95112 12.01479,234.12195 -69.45545,79.1585 -193.29373,80.01237 -270.070192,11.09797 C -2.5786668,291.28015 -3.0242005,151.19411 75.881644,64.826117 165.53948,-33.310685 321.89869,-33.345487 417.84831,55.561782 525.48929,155.3023 525.11176,327.95265 426.19582,433.47668 316.38039,550.62836 127.42569,549.83739 12.332685,440.90738" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Calque 3">
+    <path
+       id="text6936"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;line-height:1.25;font-family:Inversionz;-inkscape-font-specification:Inversionz;word-spacing:0px;fill:#ffffff"
+       d="m 82.000005,142.54102 v 108 H 190 v -108 z m 119.999995,0 v 108 h 108 v -108 z m 120,0 v 108 h 108 v -108 z m -191.99999,24 H 142 v 60 h -11.99999 z m 95.99999,0 h 60 v 60 h -12 v -48 h -12 v 48 h -12 v -48 h -12 v 48 h -12 z m 144,0 h 12 l 24,60 h -30 v -12 h 11.625 l -11.625,-30 -16.3125,42 H 346 Z M 82.000005,261.45898 v 108 H 190 v -108 z m 119.999995,0 v 108 h 108 v -108 z m 120,0 v 108 h 108 v -108 z m -215.99999,24 H 166 v 12 h -47.99999 v 36 H 154 v -12 h -12 v -12 h 24 v 36 h -59.99999 z m 119.99999,0 h 60 v 12 h -48 v 12 h 36 v 12 h -36 v 12 h 48 v 12 h -60 z m 132,0 h 12 v 12 h 12 v -12 h 12 v 12 h 12 v 12 h -12 v 12 h 12 v 12 h -12 v 12 h -12 v -12 h -12 v 12 h -12 v -12 h -12 v -12 h 12 v -12 h -12 v -12 h 12 z m 12,24 v 12 h 12 v -12 z" />
+  </g>
+</svg>

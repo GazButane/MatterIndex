@@ -1,0 +1,5 @@
+wood;
+concrete;
+metal;
+grass;
+walls;
