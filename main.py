@@ -1,3 +1,4 @@
+import shutil
 import sys
 import os
 import time
@@ -27,10 +28,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.actionRefresh_app.triggered.connect(self.refrechApp)
         self.back2listButton.clicked.connect(self.back2list)
         self.openfolderbutton.clicked.connect(self.openThingsFolder)
+        self.openFolderButton.clicked.connect(self.openOBJFolder)
         self.SortAZ.toggled.connect(lambda checked, factor=0: self.sortlist(factor))
         self.SortZA.toggled.connect(lambda checked, factor=1: self.sortlist(factor))
-
-
+        self.delOBJButton.clicked.connect(self.delOBJ)
 
 
 
@@ -41,6 +42,42 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def openThingsFolder(self):
         opener = "open" if sys.platform == "darwin" else "xdg-open"
         subprocess.call([opener, "things"])
+
+    def delOBJ(self):
+        thingsQuantity = -1
+        matterNamesList = []
+        CurrentOBJ = open("variables/currentOBJ.txt")
+        index = CurrentOBJ.read()
+        CurrentOBJ.close()
+
+        for root, _, files in os.walk("things"):
+            thingsQuantity += 1
+            ncutname = root
+            cutname = ncutname.split("/")
+            matterName = cutname[-1]
+            matterNamesList.append(matterName)
+        path = str(f"things/{matterNamesList[int(index)]}")
+        shutil.rmtree(path)
+        print(f'Folder {path} and its content removed')
+    def openOBJFolder(self):
+        thingsQuantity = -1
+        matterNamesList = []
+        CurrentOBJ = open("variables/currentOBJ.txt")
+        index = CurrentOBJ.read()
+        CurrentOBJ.close()
+
+        for root, _, files in os.walk("things"):
+            thingsQuantity += 1
+            ncutname = root
+            cutname = ncutname.split("/")
+            matterName = cutname[-1]
+            matterNamesList.append(matterName)
+
+
+        path = str(f"things/{matterNamesList[int(index)]}")
+        opener = "open" if sys.platform == "darwin" else "xdg-open"
+        print("path for OPENOBJ:",path)
+        subprocess.call([opener, path])
 
     def refrechApp(self):
         print("--Start app refresh--")
@@ -99,7 +136,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             ui_matterWidget.matterName.setText(matterName)
             ui_matterWidget.matterFrame.setStyleSheet(f"QFrame #matterFrame\u007b background-image: url({imagePathList[WidgetCycles]});\u007d")
             ui_matterWidget.matterDescription.setText(f"Contains {contentList[WidgetCycles]} items")
-            ui_matterWidget.openMatterButton.setText(f"Open{WidgetCycles}")
+            ui_matterWidget.openMatterButton.setText("Open →")
             ui_matterWidget.openMatterButton.setObjectName(f"openMatterButton{WidgetCycles}")
             ui_matterWidget.openMatterButton.clicked.connect(lambda checked, index=WidgetCycles: self.openObject(index))
             self.scrollAreaWidgetContents.layout().addWidget(matterWidget)
@@ -116,6 +153,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print("--Successful app refresh--")
 
     def openObject(self, index):
+        self.progressBar.setValue(0)
+        #set the current obj for "openobj" fonction.
+        setCurrentOBJ = open("variables/currentOBJ.txt", "w")
+        setCurrentOBJ.write(str(index))
+        setCurrentOBJ.close()
 
         thingsQuantity = -1
         matterNamesList = []
@@ -133,9 +175,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             path = str(f"things/{matterName}/{ImageList[1]}")
             imagePathList.append(path)
             contentList.append(len(ImageList))
-
             #///////////////////
 
+        self.progressBar.setValue(30)
         self.tablist.setCurrentIndex(1)
         print("Button pressed: openMatterButton", index)
         self.OBJObjectName.setText(matterNamesList[index])
@@ -156,6 +198,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     widget.setParent(None)
                     widget.deleteLater()
 ##
+
+        self.progressBar.setValue(60)
         tilesize = int(900 / len(imagesList))
         for image in imagesList:
             self.OBJlabel_ = QtWidgets.QLabel(parent=self.OBJPicturesContainer)
@@ -174,6 +218,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.OBJlabel_.setObjectName(f"OBJlabel_")
             self.horizontalLayout_2.addWidget(self.OBJlabel_)
             self.verticalLayout_6.addWidget(self.OBJPicturesContainer)
+
+        self.progressBar.setValue(100)
 
     def doSearch(self):
         content = self.SearchBar.text()

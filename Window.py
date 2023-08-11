@@ -451,25 +451,25 @@ class Ui_MainWindow(object):
         self.horizontalWidget.setObjectName("horizontalWidget")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalWidget)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.pushButton_2 = QtWidgets.QPushButton(parent=self.horizontalWidget)
-        self.pushButton_2.setStyleSheet(":hover{\n"
+        self.openFolderButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
+        self.openFolderButton.setStyleSheet(":hover{\n"
 "background-color:black;\n"
 "}")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout_3.addWidget(self.pushButton_2)
-        self.pushButton_3 = QtWidgets.QPushButton(parent=self.horizontalWidget)
-        self.pushButton_3.setStyleSheet(":hover{\n"
+        self.openFolderButton.setObjectName("openFolderButton")
+        self.horizontalLayout_3.addWidget(self.openFolderButton)
+        self.delOBJButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
+        self.delOBJButton.setStyleSheet(":hover{\n"
 "background-color:black;\n"
-"border-color:red;\n"
+"border-color:#A40000;\n"
 "}")
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.horizontalLayout_3.addWidget(self.pushButton_3)
-        self.pushButton_4 = QtWidgets.QPushButton(parent=self.horizontalWidget)
-        self.pushButton_4.setStyleSheet(":hover{\n"
+        self.delOBJButton.setObjectName("delOBJButton")
+        self.horizontalLayout_3.addWidget(self.delOBJButton)
+        self.copyAllButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
+        self.copyAllButton.setStyleSheet(":hover{\n"
 "background-color:black;\n"
 "}")
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.horizontalLayout_3.addWidget(self.pushButton_4)
+        self.copyAllButton.setObjectName("copyAllButton")
+        self.horizontalLayout_3.addWidget(self.copyAllButton)
         self.back2listButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
         self.back2listButton.setStyleSheet(":hover{\n"
 "background-color:black;\n"
@@ -601,9 +601,9 @@ class Ui_MainWindow(object):
         self.tablist.setTabText(self.tablist.indexOf(self.List), _translate("MainWindow", "List"))
         self.OBJObjectName.setText(_translate("MainWindow", "Object Name"))
         self.OBJObjectDesc.setText(_translate("MainWindow", "Object desc"))
-        self.pushButton_2.setText(_translate("MainWindow", "Open folder"))
-        self.pushButton_3.setText(_translate("MainWindow", "Delete Object"))
-        self.pushButton_4.setText(_translate("MainWindow", "Copy All"))
+        self.openFolderButton.setText(_translate("MainWindow", "Open folder"))
+        self.delOBJButton.setText(_translate("MainWindow", "Delete Object"))
+        self.copyAllButton.setText(_translate("MainWindow", "Copy All"))
         self.back2listButton.setText(_translate("MainWindow", "← Back to list"))
         self.label_8.setText(_translate("MainWindow", "Pictures avalable:"))
         self.tablist.setTabText(self.tablist.indexOf(self.Object), _translate("MainWindow", "Objet"))

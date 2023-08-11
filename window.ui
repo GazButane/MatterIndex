@@ -1039,7 +1039,7 @@ color: rgb(218, 218, 218);
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
-                <widget class="QPushButton" name="pushButton_2">
+                <widget class="QPushButton" name="openFolderButton">
                  <property name="styleSheet">
                   <string notr="true">:hover{
 background-color:black;
@@ -1051,11 +1051,11 @@ background-color:black;
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_3">
+                <widget class="QPushButton" name="delOBJButton">
                  <property name="styleSheet">
                   <string notr="true">:hover{
 background-color:black;
-border-color:red;
+border-color:#A40000;
 }</string>
                  </property>
                  <property name="text">
@@ -1064,7 +1064,7 @@ border-color:red;
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_4">
+                <widget class="QPushButton" name="copyAllButton">
                  <property name="styleSheet">
                   <string notr="true">:hover{
 background-color:black;
