@@ -3,7 +3,9 @@ import sys
 import os
 import time
 from PyQt6 import QtWidgets, uic, QtCore, QtGui
-from PyQt6.QtWidgets import QLineEdit, QDialog, QApplication, QPushButton, QSplashScreen
+from PyQt6.QtWidgets import QLineEdit, QDialog, QApplication, QPushButton, QSplashScreen, QLabel, QDialogButtonBox, \
+    QVBoxLayout, QMessageBox
+
 from Window import Ui_MainWindow
 from MatterWidget import Ui_MatterWidget
 from launchframe import Ui_launchframe
@@ -32,7 +34,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.SortAZ.toggled.connect(lambda checked, factor=0: self.sortlist(factor))
         self.SortZA.toggled.connect(lambda checked, factor=1: self.sortlist(factor))
         self.delOBJButton.clicked.connect(self.delOBJ)
-
 
 
     def back2list(self):
@@ -136,7 +137,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             ui_matterWidget.matterName.setText(matterName)
             ui_matterWidget.matterFrame.setStyleSheet(f"QFrame #matterFrame\u007b background-image: url({imagePathList[WidgetCycles]});\u007d")
             ui_matterWidget.matterDescription.setText(f"Contains {contentList[WidgetCycles]} items")
-            ui_matterWidget.openMatterButton.setText("Open →")
+            ui_matterWidget.openMatterButton.setText("Open")
             ui_matterWidget.openMatterButton.setObjectName(f"openMatterButton{WidgetCycles}")
             ui_matterWidget.openMatterButton.clicked.connect(lambda checked, index=WidgetCycles: self.openObject(index))
             self.scrollAreaWidgetContents.layout().addWidget(matterWidget)

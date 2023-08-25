@@ -211,7 +211,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>logo.svg</normaloff>logo.svg</iconset>
+    <normaloff>logoMI.png</normaloff>logoMI.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -673,9 +673,9 @@ height: 5px;</string>
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>46</red>
-              <green>52</green>
-              <blue>54</blue>
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
              </color>
             </brush>
            </colorrole>
@@ -709,18 +709,18 @@ height: 5px;</string>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>46</red>
-              <green>52</green>
-              <blue>54</blue>
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>46</red>
-              <green>52</green>
-              <blue>54</blue>
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
              </color>
             </brush>
            </colorrole>
@@ -747,9 +747,9 @@ height: 5px;</string>
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>46</red>
-              <green>52</green>
-              <blue>54</blue>
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
              </color>
             </brush>
            </colorrole>
@@ -783,18 +783,18 @@ height: 5px;</string>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>46</red>
-              <green>52</green>
-              <blue>54</blue>
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>46</red>
-              <green>52</green>
-              <blue>54</blue>
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
              </color>
             </brush>
            </colorrole>
@@ -821,9 +821,9 @@ height: 5px;</string>
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>46</red>
-              <green>52</green>
-              <blue>54</blue>
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
              </color>
             </brush>
            </colorrole>
@@ -857,18 +857,18 @@ height: 5px;</string>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>46</red>
-              <green>52</green>
-              <blue>54</blue>
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>46</red>
-              <green>52</green>
-              <blue>54</blue>
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
              </color>
             </brush>
            </colorrole>
@@ -889,8 +889,9 @@ height: 5px;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">	color: white;
-    background-color: #2E3436;
-	border-radius: 15px;
+	background-color: #242424;
+border-radius: 15px;
+
 </string>
         </property>
         <property name="tabPosition">
