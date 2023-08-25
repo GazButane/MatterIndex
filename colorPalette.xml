@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<palette>
+ <active>
+  <colorrole role="Button">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>66</red>
+     <green>66</green>
+     <blue>66</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Dark">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>20</red>
+     <green>20</green>
+     <blue>20</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Mid">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>52</red>
+     <green>52</green>
+     <blue>52</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Base">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>36</red>
+     <green>36</green>
+     <blue>36</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Window">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>36</red>
+     <green>36</green>
+     <blue>36</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Highlight">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>76</red>
+     <green>101</green>
+     <blue>150</blue>
+    </color>
+   </brush>
+  </colorrole>
+ </active>
+ <inactive>
+  <colorrole role="Button">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>66</red>
+     <green>66</green>
+     <blue>66</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Dark">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>20</red>
+     <green>20</green>
+     <blue>20</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Mid">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>52</red>
+     <green>52</green>
+     <blue>52</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Base">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>36</red>
+     <green>36</green>
+     <blue>36</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Window">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>36</red>
+     <green>36</green>
+     <blue>36</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Highlight">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>76</red>
+     <green>101</green>
+     <blue>150</blue>
+    </color>
+   </brush>
+  </colorrole>
+ </inactive>
+ <disabled>
+  <colorrole role="WindowText">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>20</red>
+     <green>20</green>
+     <blue>20</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Button">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>66</red>
+     <green>66</green>
+     <blue>66</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Dark">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>20</red>
+     <green>20</green>
+     <blue>20</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Mid">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>52</red>
+     <green>52</green>
+     <blue>52</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Text">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>20</red>
+     <green>20</green>
+     <blue>20</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="ButtonText">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>20</red>
+     <green>20</green>
+     <blue>20</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Base">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>36</red>
+     <green>36</green>
+     <blue>36</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Window">
+   <brush brushstyle="SolidPattern">
+    <color alpha="255">
+     <red>36</red>
+     <green>36</green>
+     <blue>36</blue>
+    </color>
+   </brush>
+  </colorrole>
+ </disabled>
+</palette>
