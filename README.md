@@ -1,4 +1,6 @@
 
+![logoMI-Text](https://github.com/GazButane/MatterIndex/assets/100444508/134f7572-18e6-4cbe-8b0c-02027707a48d)
+
 # Matter index
 
 Material manager for 3D software (Blender, substance Painter, Cinema 4D, etc, ...) 
