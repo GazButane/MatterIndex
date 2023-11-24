@@ -19,10 +19,6 @@ Material manager for 3D software (Blender, substance Painter, Cinema 4D, etc, ..
  Add a folder named **"things"** at the root of the software and drag your **unzipped** materials into it.
 
 
-## Website
-
-[Netrrot/matterindex](https://netroot.com/matterindex)
-
 
 ## Authors
 
