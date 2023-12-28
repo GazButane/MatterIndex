@@ -90,7 +90,7 @@ class Ui_MatterWidget(object):
 "    text-align: center;\n"
 "    text-decoration: none;\n"
 "    background-image: url(\"no_image.svg\");\n"
-"    background-size: 10%;\n"
+"    background-size: 100%;\n"
 "    border-color: grey;\n"
 "    border-style:solid;\n"
 "    border-width: 1px;\n"

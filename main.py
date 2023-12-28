@@ -10,6 +10,7 @@ from Window import Ui_MainWindow
 from MatterWidget import Ui_MatterWidget
 from launchframe import Ui_launchframe
 import subprocess
+from PIL import Image
 
 
 
@@ -135,7 +136,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             ui_matterWidget = Ui_MatterWidget()
             ui_matterWidget.setupUi(matterWidget)
             ui_matterWidget.matterName.setText(matterName)
-            ui_matterWidget.matterFrame.setStyleSheet(f"QFrame #matterFrame\u007b background-image: url({imagePathList[WidgetCycles]});\u007d")
+            #let's create a thumbnail:
+            thumbnail_filename = f'thumbnail/thumb_{matterName}.png'
+            objThumbnail = Image.open(imagePathList[WidgetCycles])
+            Size = (100, 100)
+            objThumbnail.thumbnail(Size)
+            objThumbnail.save(thumbnail_filename)
+            #full image:
+            #ui_matterWidget.matterFrame.setStyleSheet(f"QFrame #matterFrame\u007b background-image: url({imagePathList[WidgetCycles]});\u007d")
+            #compressed:
+            ui_matterWidget.matterFrame.setStyleSheet(f"QFrame #matterFrame\u007b background-image: url({thumbnail_filename});\u007d")
+
             ui_matterWidget.matterDescription.setText(f"Contains {contentList[WidgetCycles]} items")
             ui_matterWidget.openMatterButton.setText("Open")
             ui_matterWidget.openMatterButton.setObjectName(f"openMatterButton{WidgetCycles}")
