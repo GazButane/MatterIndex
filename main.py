@@ -27,24 +27,55 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         self.searchButton.clicked.connect(self.doSearch)
+        self.notifFrame.setVisible(False)
         self.refrechApp()
         self.actionRefresh_app.triggered.connect(self.refrechApp)
         self.back2listButton.clicked.connect(self.back2list)
         self.openfolderbutton.clicked.connect(self.openThingsFolder)
         self.openFolderButton.clicked.connect(self.openOBJFolder)
+        #self.notifFrame.clicked.connect(self.undisplayNotiframe)
         self.SortAZ.toggled.connect(lambda checked, factor=0: self.sortlist(factor))
         self.SortZA.toggled.connect(lambda checked, factor=1: self.sortlist(factor))
         self.delOBJButton.clicked.connect(self.delOBJ)
 
 
+
+    #Completed
+    def displayNotif(self, content, state):
+        self.notifText.setText(content)
+        if state == 1:
+            self.notifIcon.setText("ⅰ")
+            self.notifFrame.setStyleSheet("QFrame{\n"
+                                          "    background-color: #246EDB;\n"
+                                          "    padding: 2px 20px;\n"
+                                          "    text-align: center;\n"
+                                          "    text-decoration: none;\n"
+                                          "    border-color: grey;\n"
+                                          "    border-style:solid;\n"
+                                          "    border-width: 0px;\n"
+                                          "    border-radius: 15px;\n"
+                                          "    font-family:\'Courier New\', Courier, monospace;\n"
+                                          "    margin: 10px;\n"
+                                          "}")
+        self.notifFrame.setVisible(True)
+
+    def undisplayNotiframe(self):
+        self.notifFrame.setVisible(False)
+
+
+    #Completed
     def back2list(self):
         self.tablist.setCurrentIndex(0)
         print("Button pressed: Back to list")
 
+
+    #Completed
     def openThingsFolder(self):
         opener = "open" if sys.platform == "darwin" else "xdg-open"
         subprocess.call([opener, "things"])
 
+
+    #Completed
     def delOBJ(self):
         thingsQuantity = -1
         matterNamesList = []
@@ -61,6 +92,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         path = str(f"things/{matterNamesList[int(index)]}")
         shutil.rmtree(path)
         print(f'Folder {path} and its content removed')
+        self.displayNotif("Deleted !", 1)
+        self.back2list()
+        self.refrechApp()
+
+
+    #Completed
     def openOBJFolder(self):
         thingsQuantity = -1
         matterNamesList = []
@@ -81,9 +118,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print("path for OPENOBJ:",path)
         subprocess.call([opener, path])
 
+
+    #Completed
     def refrechApp(self):
         print("--Start app refresh--")
-        
 
         self.tagBox.clear()
         self.tagBox.addItem("All")
@@ -162,8 +200,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         getstartinfo = open("variables/startinfo.txt", "w")
         getstartinfo.write(str(1))
         getstartinfo.close()
+
         print("--Successful app refresh--")
 
+
+    #Completed
     def openObject(self, index):
         self.progressBar.setValue(0)
         #set the current obj for "openobj" fonction.
@@ -199,8 +240,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for root, _, files in os.walk("things"):
             pathList.append(root)
         imagesList = os.listdir(pathList[index])
-##
 
+        #clear image container
         layout = self.OBJPicturesContainer.layout()
         if layout:
             while layout.count():
@@ -209,7 +250,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 if widget:
                     widget.setParent(None)
                     widget.deleteLater()
-##
+
 
         self.progressBar.setValue(60)
         tilesize = int(900 / len(imagesList))
@@ -225,7 +266,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.OBJlabel_.setText("")
             url = str(f"{pathList[index]}/{image}")
             print(url)
-            self.OBJlabel_.setPixmap(QtGui.QPixmap(url))
+            #self.OBJlabel_.setPixmap(QtGui.QPixmap(url))
+            self.OBJlabel_.setStyleSheet(f"border-radius: 15px; background-image: url({url})")
             self.OBJlabel_.setScaledContents(True)
             self.OBJlabel_.setObjectName(f"OBJlabel_")
             self.horizontalLayout_2.addWidget(self.OBJlabel_)
@@ -233,6 +275,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.progressBar.setValue(100)
 
+
+    #Not Completed
     def doSearch(self):
         content = self.SearchBar.text()
         print("Search executed:", content)
@@ -248,6 +292,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     widget.deleteLater()
 
 
+    #Not Completed
     def sortlist(self, factor):
         self.progressBar.setValue(0)
         # clear list:

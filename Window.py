@@ -263,6 +263,48 @@ class Ui_MainWindow(object):
         self.verticalLayout.addItem(spacerItem)
         spacerItem1 = QtWidgets.QSpacerItem(200, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
         self.verticalLayout.addItem(spacerItem1)
+        self.notifFrame = QtWidgets.QFrame(parent=self.centralwidget)
+        self.notifFrame.setStyleSheet("QFrame{\n"
+"    background-color: #246EDB;\n"
+"    padding: 2px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 0px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"}")
+        self.notifFrame.setObjectName("notifFrame")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.notifFrame)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.notifIcon = QtWidgets.QLabel(parent=self.notifFrame)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(15)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.notifIcon.setFont(font)
+        self.notifIcon.setStyleSheet("  padding: 0px 0px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-width: 0px;\n"
+"    font-family:\'Georgia\';\n"
+"    margin: 0px;")
+        self.notifIcon.setObjectName("notifIcon")
+        self.horizontalLayout_5.addWidget(self.notifIcon)
+        self.notifText = QtWidgets.QLabel(parent=self.notifFrame)
+        self.notifText.setStyleSheet("\n"
+"    padding: 0px 0px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-width: 0px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 5px;")
+        self.notifText.setObjectName("notifText")
+        self.horizontalLayout_5.addWidget(self.notifText)
+        self.verticalLayout.addWidget(self.notifFrame)
         self.openfolderbutton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.openfolderbutton.setStyleSheet("QPushButton{\n"
 "color: rgb(218, 218, 218);\n"
@@ -597,6 +639,8 @@ class Ui_MainWindow(object):
         self.label_13.setText(_translate("MainWindow", "Sort:"))
         self.SortAZ.setText(_translate("MainWindow", "→ A/Z"))
         self.SortZA.setText(_translate("MainWindow", "← Z/A"))
+        self.notifIcon.setText(_translate("MainWindow", "ⅰ"))
+        self.notifText.setText(_translate("MainWindow", "Notification"))
         self.openfolderbutton.setText(_translate("MainWindow", "Open folder"))
         self.tablist.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.tablist.setTabText(self.tablist.indexOf(self.List), _translate("MainWindow", "List"))
