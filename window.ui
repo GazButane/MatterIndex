@@ -497,7 +497,7 @@ background-color:black;
            </font>
           </property>
           <property name="text">
-           <string>Find by category:</string>
+           <string>Tags:</string>
           </property>
          </widget>
         </item>
@@ -614,7 +614,7 @@ background-color:black;
           <property name="styleSheet">
            <string notr="true">QFrame{
 	background-color: #246EDB;
-    padding: 2px 20px;
+    padding: 2px 6px;
     text-align: center;
     text-decoration: none;
 	border-color: grey;
@@ -628,6 +628,12 @@ background-color:black;
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
             <widget class="QLabel" name="notifIcon">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="font">
               <font>
                <family>Georgia</family>
@@ -662,6 +668,42 @@ background-color:black;
              </property>
              <property name="text">
               <string>Notification</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="notifDelButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+               <underline>false</underline>
+               <strikeout>false</strikeout>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">	background-color: #246EDB;
+    text-align: center;
+    text-decoration: none;
+	border-color: grey;
+    border-style:solid;
+    border-width: 0px;
+    border-radius: 15px;
+</string>
+             </property>
+             <property name="text">
+              <string>✕</string>
              </property>
             </widget>
            </item>
@@ -1190,7 +1232,7 @@ color: rgb(218, 218, 218);
 </string>
               </property>
               <property name="text">
-               <string>Pictures avalable:</string>
+               <string>Pictures available:</string>
               </property>
              </widget>
             </item>

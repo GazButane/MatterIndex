@@ -266,7 +266,7 @@ class Ui_MainWindow(object):
         self.notifFrame = QtWidgets.QFrame(parent=self.centralwidget)
         self.notifFrame.setStyleSheet("QFrame{\n"
 "    background-color: #246EDB;\n"
-"    padding: 2px 20px;\n"
+"    padding: 2px 6px;\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
 "    border-color: grey;\n"
@@ -280,6 +280,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.notifFrame)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.notifIcon = QtWidgets.QLabel(parent=self.notifFrame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.notifIcon.sizePolicy().hasHeightForWidth())
+        self.notifIcon.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(15)
@@ -304,6 +309,28 @@ class Ui_MainWindow(object):
 "    margin: 5px;")
         self.notifText.setObjectName("notifText")
         self.horizontalLayout_5.addWidget(self.notifText)
+        self.notifDelButton = QtWidgets.QPushButton(parent=self.notifFrame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.notifDelButton.sizePolicy().hasHeightForWidth())
+        self.notifDelButton.setSizePolicy(sizePolicy)
+        self.notifDelButton.setMaximumSize(QtCore.QSize(10, 20))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.notifDelButton.setFont(font)
+        self.notifDelButton.setStyleSheet("    background-color: #246EDB;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 0px;\n"
+"    border-radius: 15px;\n"
+"")
+        self.notifDelButton.setObjectName("notifDelButton")
+        self.horizontalLayout_5.addWidget(self.notifDelButton)
         self.verticalLayout.addWidget(self.notifFrame)
         self.openfolderbutton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.openfolderbutton.setStyleSheet("QPushButton{\n"
@@ -634,13 +661,14 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MatterIndex"))
         self.label_2.setText(_translate("MainWindow", "Find by name:"))
         self.searchButton.setText(_translate("MainWindow", "Search"))
-        self.label_3.setText(_translate("MainWindow", "Find by category:"))
+        self.label_3.setText(_translate("MainWindow", "Tags:"))
         self.tagBox.setItemText(0, _translate("MainWindow", "All"))
         self.label_13.setText(_translate("MainWindow", "Sort:"))
         self.SortAZ.setText(_translate("MainWindow", "→ A/Z"))
         self.SortZA.setText(_translate("MainWindow", "← Z/A"))
         self.notifIcon.setText(_translate("MainWindow", "ⅰ"))
         self.notifText.setText(_translate("MainWindow", "Notification"))
+        self.notifDelButton.setText(_translate("MainWindow", "✕"))
         self.openfolderbutton.setText(_translate("MainWindow", "Open folder"))
         self.tablist.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.tablist.setTabText(self.tablist.indexOf(self.List), _translate("MainWindow", "List"))
@@ -650,7 +678,7 @@ class Ui_MainWindow(object):
         self.delOBJButton.setText(_translate("MainWindow", "Delete Object"))
         self.copyAllButton.setText(_translate("MainWindow", "Copy All"))
         self.back2listButton.setText(_translate("MainWindow", "← Back to list"))
-        self.label_8.setText(_translate("MainWindow", "Pictures avalable:"))
+        self.label_8.setText(_translate("MainWindow", "Pictures available:"))
         self.tablist.setTabText(self.tablist.indexOf(self.Object), _translate("MainWindow", "Objet"))
         self.menufile.setTitle(_translate("MainWindow", "File"))
         self.menuedit.setTitle(_translate("MainWindow", "Edit"))

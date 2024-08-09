@@ -33,7 +33,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.back2listButton.clicked.connect(self.back2list)
         self.openfolderbutton.clicked.connect(self.openThingsFolder)
         self.openFolderButton.clicked.connect(self.openOBJFolder)
-        #self.notifFrame.clicked.connect(self.undisplayNotiframe)
+        self.notifDelButton.clicked.connect(self.undisplayNotiframe)
         self.SortAZ.toggled.connect(lambda checked, factor=0: self.sortlist(factor))
         self.SortZA.toggled.connect(lambda checked, factor=1: self.sortlist(factor))
         self.delOBJButton.clicked.connect(self.delOBJ)
@@ -41,8 +41,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
     #Completed
-    def displayNotif(self, content, state):
-        self.notifText.setText(content)
+    def displayNotif(self, text, state):
+        self.notifText.setText(text)
         if state == 1:
             self.notifIcon.setText("ⅰ")
             self.notifFrame.setStyleSheet("QFrame{\n"
@@ -281,6 +281,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         content = self.SearchBar.text()
         print("Search executed:", content)
         self.SearchBar.setText("")
+        self.displayNotif("Search...", 1)
         # clear list:
         layout = self.scrollAreaWidgetContents.layout()
         if layout:
