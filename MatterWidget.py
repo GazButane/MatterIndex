@@ -102,57 +102,80 @@ class Ui_MatterWidget(object):
         self.matterFrame.setObjectName("matterFrame")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.matterFrame)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.matterName = QtWidgets.QLabel(parent=self.matterFrame)
+        self.frame = QtWidgets.QFrame(parent=self.matterFrame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy)
+        self.frame.setMinimumSize(QtCore.QSize(400, 0))
+        self.frame.setMaximumSize(QtCore.QSize(400, 16777215))
+        self.frame.setStyleSheet("QFrame #frame {\n"
+"    color: rgb(218, 218, 218);\n"
+"    background-color: rgba(16, 16, 16, 203);\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"\n"
+"}")
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame.setObjectName("frame")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.matterName = QtWidgets.QLabel(parent=self.frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.matterName.sizePolicy().hasHeightForWidth())
         self.matterName.setSizePolicy(sizePolicy)
-        self.matterName.setMinimumSize(QtCore.QSize(300, 0))
-        self.matterName.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.matterName.setMinimumSize(QtCore.QSize(300, 60))
+        self.matterName.setMaximumSize(QtCore.QSize(1000, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Ubuntu Thin")
-        font.setPointSize(20)
+        font.setFamily("Comfortaa")
+        font.setPointSize(30)
         font.setBold(False)
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.matterName.setFont(font)
         self.matterName.setStyleSheet("color: rgb(218, 218, 218);\n"
+"    background-color: transparent;\n"
 "    text-decoration: none;\n"
-"   border-color: grey;\n"
-"    border-radius: 15px;\n"
-"margin-left: 10px;\n"
-" background-color: rgba(0, 0, 0, 0.37);")
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 0px;\n"
+"    border-radius: 0px;")
         self.matterName.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.matterName.setObjectName("matterName")
-        self.verticalLayout_4.addWidget(self.matterName)
-        self.matterDescription = QtWidgets.QLabel(parent=self.matterFrame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Preferred)
+        self.verticalLayout.addWidget(self.matterName)
+        self.matterDescription = QtWidgets.QLabel(parent=self.frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.matterDescription.sizePolicy().hasHeightForWidth())
         self.matterDescription.setSizePolicy(sizePolicy)
         self.matterDescription.setMinimumSize(QtCore.QSize(300, 0))
-        self.matterDescription.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.matterDescription.setMaximumSize(QtCore.QSize(1000, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Ubuntu Condensed")
+        font.setFamily("Comfortaa")
         font.setPointSize(13)
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.matterDescription.setFont(font)
         self.matterDescription.setStyleSheet("color: rgb(218, 218, 218);\n"
+"    background-color: transparent;\n"
 "    text-decoration: none;\n"
-"   border-color: grey;\n"
-"    border-radius: 15px;\n"
-"margin-left: 10px;\n"
-" background-color: rgba(0, 0, 0, 0.37);\n"
-"")
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 0px;\n"
+"    border-radius: 0px;")
         self.matterDescription.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.matterDescription.setObjectName("matterDescription")
-        self.verticalLayout_4.addWidget(self.matterDescription)
-        self.horizontalLayout_4.addLayout(self.verticalLayout_4)
+        self.verticalLayout.addWidget(self.matterDescription)
+        self.horizontalLayout_4.addWidget(self.frame)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
         self.openMatterButton = QtWidgets.QPushButton(parent=self.matterFrame)

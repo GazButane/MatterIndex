@@ -180,6 +180,13 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.SearchBar)
         self.searchButton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.searchButton.setEnabled(True)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.searchButton.setFont(font)
         self.searchButton.setStyleSheet("QPushButton{\n"
 "\n"
 "color: rgb(218, 218, 218);\n"
@@ -211,6 +218,12 @@ class Ui_MainWindow(object):
         self.label_3.setObjectName("label_3")
         self.verticalLayout.addWidget(self.label_3)
         self.tagBox = QtWidgets.QComboBox(parent=self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.tagBox.setFont(font)
         self.tagBox.setStyleSheet("color: rgb(218, 218, 218);\n"
 "    background-color: rgba(0, 0, 0, 0.37);\n"
 "    padding: 6px 20px;\n"
@@ -225,40 +238,20 @@ class Ui_MainWindow(object):
         self.tagBox.setObjectName("tagBox")
         self.tagBox.addItem("")
         self.verticalLayout.addWidget(self.tagBox)
-        self.label_13 = QtWidgets.QLabel(parent=self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Cantarell Light")
-        font.setPointSize(12)
-        self.label_13.setFont(font)
-        self.label_13.setObjectName("label_13")
-        self.verticalLayout.addWidget(self.label_13)
-        self.radioFrame = QtWidgets.QFrame(parent=self.centralwidget)
-        self.radioFrame.setStyleSheet("QFrame #radioFrame{\n"
-"    color: rgb(218, 218, 218);\n"
-"    background-color: rgba(0, 0, 0, 0.37);\n"
-"    padding: 6px 20px;\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"   border-color: grey;\n"
-"    border-style:solid;\n"
-"    border-width: 1px;\n"
-"    border-radius: 15px;\n"
-"    font-family:\'Courier New\', Courier, monospace;\n"
-"    margin: 10px;\n"
-"}")
-        self.radioFrame.setObjectName("radioFrame")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.radioFrame)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.SortAZ = QtWidgets.QRadioButton(parent=self.radioFrame)
-        self.SortAZ.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.SortAZ.setStyleSheet("")
-        self.SortAZ.setChecked(True)
-        self.SortAZ.setObjectName("SortAZ")
-        self.verticalLayout_4.addWidget(self.SortAZ)
-        self.SortZA = QtWidgets.QRadioButton(parent=self.radioFrame)
-        self.SortZA.setObjectName("SortZA")
-        self.verticalLayout_4.addWidget(self.SortZA)
-        self.verticalLayout.addWidget(self.radioFrame)
+        self.label = QtWidgets.QLabel(parent=self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setMaximumSize(QtCore.QSize(200, 65))
+        self.label.setStyleSheet("\n"
+"    margin: 10px;")
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("logoMI-Text.png"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         spacerItem1 = QtWidgets.QSpacerItem(200, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -300,6 +293,11 @@ class Ui_MainWindow(object):
         self.notifIcon.setObjectName("notifIcon")
         self.horizontalLayout_5.addWidget(self.notifIcon)
         self.notifText = QtWidgets.QLabel(parent=self.notifFrame)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.notifText.setFont(font)
         self.notifText.setStyleSheet("\n"
 "    padding: 0px 0px;\n"
 "    text-align: center;\n"
@@ -307,6 +305,7 @@ class Ui_MainWindow(object):
 "    border-width: 0px;\n"
 "    font-family:\'Courier New\', Courier, monospace;\n"
 "    margin: 5px;")
+        self.notifText.setWordWrap(True)
         self.notifText.setObjectName("notifText")
         self.horizontalLayout_5.addWidget(self.notifText)
         self.notifDelButton = QtWidgets.QPushButton(parent=self.notifFrame)
@@ -321,7 +320,7 @@ class Ui_MainWindow(object):
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.notifDelButton.setFont(font)
-        self.notifDelButton.setStyleSheet("    background-color: #246EDB;\n"
+        self.notifDelButton.setStyleSheet("    background-color: transparent;\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
 "    border-color: grey;\n"
@@ -333,6 +332,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.notifDelButton)
         self.verticalLayout.addWidget(self.notifFrame)
         self.openfolderbutton = QtWidgets.QPushButton(parent=self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.openfolderbutton.setFont(font)
         self.openfolderbutton.setStyleSheet("QPushButton{\n"
 "color: rgb(218, 218, 218);\n"
 "    background-color: rgba(0, 0, 0, 0.37);\n"
@@ -478,9 +483,9 @@ class Ui_MainWindow(object):
         self.OBJObjectName = QtWidgets.QLabel(parent=self.Object)
         self.OBJObjectName.setMaximumSize(QtCore.QSize(16777215, 50))
         font = QtGui.QFont()
-        font.setFamily("Ubuntu Mono")
+        font.setFamily("Comfortaa")
         font.setPointSize(24)
-        font.setBold(True)
+        font.setBold(False)
         self.OBJObjectName.setFont(font)
         self.OBJObjectName.setObjectName("OBJObjectName")
         self.verticalLayout_5.addWidget(self.OBJObjectName)
@@ -492,7 +497,7 @@ class Ui_MainWindow(object):
         self.OBJObjectDesc.setSizePolicy(sizePolicy)
         self.OBJObjectDesc.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Ubuntu Mono")
+        font.setFamily("Comfortaa")
         font.setPointSize(15)
         font.setBold(False)
         self.OBJObjectDesc.setFont(font)
@@ -517,42 +522,206 @@ class Ui_MainWindow(object):
 "    border-radius: 15px;\n"
 "    font-family:\'Courier New\', Courier, monospace;\n"
 "    margin: 10px;\n"
+"    margin-bottom: 0px;\n"
+"    margin-top: 5px;\n"
 "}")
         self.horizontalWidget.setObjectName("horizontalWidget")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalWidget)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.openFolderButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.openFolderButton.setFont(font)
         self.openFolderButton.setStyleSheet(":hover{\n"
 "background-color:black;\n"
 "}")
         self.openFolderButton.setObjectName("openFolderButton")
         self.horizontalLayout_3.addWidget(self.openFolderButton)
         self.delOBJButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.delOBJButton.setFont(font)
         self.delOBJButton.setStyleSheet(":hover{\n"
 "background-color:black;\n"
 "border-color:#A40000;\n"
 "}")
         self.delOBJButton.setObjectName("delOBJButton")
         self.horizontalLayout_3.addWidget(self.delOBJButton)
-        self.copyAllButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
-        self.copyAllButton.setStyleSheet(":hover{\n"
-"background-color:black;\n"
-"}")
-        self.copyAllButton.setObjectName("copyAllButton")
-        self.horizontalLayout_3.addWidget(self.copyAllButton)
         self.back2listButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.back2listButton.setFont(font)
         self.back2listButton.setStyleSheet(":hover{\n"
 "background-color:black;\n"
 "}")
         self.back2listButton.setObjectName("back2listButton")
         self.horizontalLayout_3.addWidget(self.back2listButton)
         self.verticalLayout_5.addWidget(self.horizontalWidget)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.verticalLayout_5.addItem(spacerItem3)
+        self.widget = QtWidgets.QWidget(parent=self.Object)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
+        self.widget.setSizePolicy(sizePolicy)
+        self.widget.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget.setObjectName("widget")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.widget)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.DestinationFolderButton = QtWidgets.QPushButton(parent=self.widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.DestinationFolderButton.sizePolicy().hasHeightForWidth())
+        self.DestinationFolderButton.setSizePolicy(sizePolicy)
+        self.DestinationFolderButton.setMinimumSize(QtCore.QSize(250, 0))
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.DestinationFolderButton.setFont(font)
+        self.DestinationFolderButton.setStyleSheet(":hover{\n"
+"background-color:black;\n"
+"}\n"
+"QPushButton{\n"
+"    color: white;\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 7px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: #45CE7F;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"}")
+        self.DestinationFolderButton.setObjectName("DestinationFolderButton")
+        self.horizontalLayout_6.addWidget(self.DestinationFolderButton)
+        self.ExportButton = QtWidgets.QPushButton(parent=self.widget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.ExportButton.setFont(font)
+        self.ExportButton.setStyleSheet(":hover{\n"
+"background-color:black;\n"
+"}\n"
+"QPushButton{\n"
+"    color: white;\n"
+"    background-color: #45CE7F;\n"
+"    padding: 7px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: #45CE7F;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"}")
+        self.ExportButton.setObjectName("ExportButton")
+        self.horizontalLayout_6.addWidget(self.ExportButton)
+        self.verticalLayout_5.addWidget(self.widget)
+        self.verticalLayout_6.addLayout(self.verticalLayout_5)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem3)
         self.label_8 = QtWidgets.QLabel(parent=self.Object)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
+        self.label_8.setSizePolicy(sizePolicy)
         self.label_8.setMaximumSize(QtCore.QSize(16777215, 60))
-        self.label_8.setStyleSheet("\n"
-"color: rgb(218, 218, 218);\n"
+        font = QtGui.QFont()
+        font.setFamily("Comfortaa")
+        font.setPointSize(15)
+        self.label_8.setFont(font)
+        self.label_8.setStyleSheet("")
+        self.label_8.setObjectName("label_8")
+        self.verticalLayout_6.addWidget(self.label_8)
+        self.TagManagementWidget = QtWidgets.QWidget(parent=self.Object)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.TagManagementWidget.sizePolicy().hasHeightForWidth())
+        self.TagManagementWidget.setSizePolicy(sizePolicy)
+        self.TagManagementWidget.setMinimumSize(QtCore.QSize(0, 20))
+        self.TagManagementWidget.setMaximumSize(QtCore.QSize(16777215, 51))
+        self.TagManagementWidget.setStyleSheet("margin: 0px;\n"
+"padding: 0px;")
+        self.TagManagementWidget.setObjectName("TagManagementWidget")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.TagManagementWidget)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.TagFrame = QtWidgets.QFrame(parent=self.TagManagementWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.TagFrame.sizePolicy().hasHeightForWidth())
+        self.TagFrame.setSizePolicy(sizePolicy)
+        self.TagFrame.setStyleSheet("QFrame{\n"
+"    background-color: #CE7345;\n"
+"     padding: 0px 0px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 0px;\n"
+"    border-radius: 15px;\n"
+"    margin: 0px;\n"
+"}")
+        self.TagFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.TagFrame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.TagFrame.setObjectName("TagFrame")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.TagFrame)
+        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
+        self.TagLabel = QtWidgets.QLabel(parent=self.TagFrame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.TagLabel.sizePolicy().hasHeightForWidth())
+        self.TagLabel.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Comfortaa")
+        font.setBold(False)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.TagLabel.setFont(font)
+        self.TagLabel.setStyleSheet("padding-top: 0px;")
+        self.TagLabel.setObjectName("TagLabel")
+        self.horizontalLayout_9.addWidget(self.TagLabel)
+        self.horizontalLayout_7.addWidget(self.TagFrame)
+        self.TagEditButton = QtWidgets.QPushButton(parent=self.TagManagementWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.TagEditButton.sizePolicy().hasHeightForWidth())
+        self.TagEditButton.setSizePolicy(sizePolicy)
+        self.TagEditButton.setMinimumSize(QtCore.QSize(0, 20))
+        self.TagEditButton.setMaximumSize(QtCore.QSize(16777215, 50))
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setPointSize(25)
+        font.setBold(False)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.TagEditButton.setFont(font)
+        self.TagEditButton.setStyleSheet(":hover{\n"
+"background-color:black;\n"
+"}\n"
+"QPushButton{\n"
+"    color: white;\n"
 "    background-color: rgba(0, 0, 0, 0.37);\n"
 "    padding: 7px 20px;\n"
 "    text-align: center;\n"
@@ -562,11 +731,14 @@ class Ui_MainWindow(object):
 "    border-width: 1px;\n"
 "    border-radius: 15px;\n"
 "    font-family:\'Courier New\', Courier, monospace;\n"
-"    margin: 10px;\n"
-"")
-        self.label_8.setObjectName("label_8")
-        self.verticalLayout_5.addWidget(self.label_8)
-        self.verticalLayout_6.addLayout(self.verticalLayout_5)
+"    margin: 0px;\n"
+"margin-left: 0px;\n"
+"}")
+        self.TagEditButton.setObjectName("TagEditButton")
+        self.horizontalLayout_7.addWidget(self.TagEditButton)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem4)
+        self.verticalLayout_6.addWidget(self.TagManagementWidget)
         self.OBJPicturesContainer = QtWidgets.QWidget(parent=self.Object)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -576,16 +748,17 @@ class Ui_MainWindow(object):
         self.OBJPicturesContainer.setMaximumSize(QtCore.QSize(16777215, 200))
         self.OBJPicturesContainer.setStyleSheet("#OBJPicturesContainer{\n"
 "color: rgb(218, 218, 218);\n"
-"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    background-color: transparent;\n"
 "    padding: 20px 20px;\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
 "    border-color: grey;\n"
 "    border-style:solid;\n"
-"    border-width: 1px;\n"
+"    border-width: 0px;\n"
 "    border-radius: 15px;\n"
 "    font-family:\'Courier New\', Courier, monospace;\n"
 "    margin: 10px;\n"
+"    margin-top: 0px;\n"
 "}")
         self.OBJPicturesContainer.setObjectName("OBJPicturesContainer")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.OBJPicturesContainer)
@@ -663,9 +836,6 @@ class Ui_MainWindow(object):
         self.searchButton.setText(_translate("MainWindow", "Search"))
         self.label_3.setText(_translate("MainWindow", "Tags:"))
         self.tagBox.setItemText(0, _translate("MainWindow", "All"))
-        self.label_13.setText(_translate("MainWindow", "Sort:"))
-        self.SortAZ.setText(_translate("MainWindow", "→ A/Z"))
-        self.SortZA.setText(_translate("MainWindow", "← Z/A"))
         self.notifIcon.setText(_translate("MainWindow", "ⅰ"))
         self.notifText.setText(_translate("MainWindow", "Notification"))
         self.notifDelButton.setText(_translate("MainWindow", "✕"))
@@ -676,9 +846,12 @@ class Ui_MainWindow(object):
         self.OBJObjectDesc.setText(_translate("MainWindow", "Object desc"))
         self.openFolderButton.setText(_translate("MainWindow", "Open folder"))
         self.delOBJButton.setText(_translate("MainWindow", "Delete Object"))
-        self.copyAllButton.setText(_translate("MainWindow", "Copy All"))
         self.back2listButton.setText(_translate("MainWindow", "← Back to list"))
-        self.label_8.setText(_translate("MainWindow", "Pictures available:"))
+        self.DestinationFolderButton.setText(_translate("MainWindow", "Destination folder"))
+        self.ExportButton.setText(_translate("MainWindow", "Export"))
+        self.label_8.setText(_translate("MainWindow", "Tag management:"))
+        self.TagLabel.setText(_translate("MainWindow", "Miscellaneous"))
+        self.TagEditButton.setText(_translate("MainWindow", "✎"))
         self.tablist.setTabText(self.tablist.indexOf(self.Object), _translate("MainWindow", "Objet"))
         self.menufile.setTitle(_translate("MainWindow", "File"))
         self.menuedit.setTitle(_translate("MainWindow", "Edit"))
