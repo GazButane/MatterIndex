@@ -2,10 +2,12 @@ import shutil
 import sys
 import os
 import time
+import json
 from PyQt6 import QtWidgets, uic, QtCore, QtGui
-from PyQt6.QtWidgets import QLineEdit, QDialog, QFileDialog, QApplication, QPushButton, QSplashScreen, QLabel, QDialogButtonBox, \
+from PyQt6.QtWidgets import QLineEdit, QDialog, QFileDialog, QApplication, QPushButton, QSplashScreen, QLabel, QDialogButtonBox, QColorDialog, \
     QVBoxLayout, QMessageBox
-
+from PyQt6.QtGui import QColor
+from PyQt6.QtCore import Qt
 from Window import Ui_MainWindow
 from MatterWidget import Ui_MatterWidget
 from launchframe import Ui_launchframe
@@ -31,12 +33,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.refrechApp()
         self.actionRefresh_app.triggered.connect(self.manualRefreshApp)
         self.back2listButton.clicked.connect(self.back2list)
+        self.back2listButton_2.clicked.connect(self.back2list)
+        self.ManageTagsButton.clicked.connect(self.openManageTagsTab)
         self.openfolderbutton.clicked.connect(self.openThingsFolder)
         self.openFolderButton.clicked.connect(self.openOBJFolder)
         self.notifDelButton.clicked.connect(self.undisplayNotiframe)
         self.delOBJButton.clicked.connect(self.delOBJ)
         self.DestinationFolderButton.clicked.connect(self.setDestinationFolder)
         self.ExportButton.clicked.connect((self.exportObject))
+        self.TMSaveButton.clicked.connect(lambda flag: self.updateTagManagement(True))
+        self.TMTagBox.currentTextChanged.connect(self.fillTagManagementFields)
+        self.TMColorSelectorButton.clicked.connect(self.PickColor)
+        self.TMClearFieldsButton.clicked.connect(self.clearTagManagementFields)
 
 
 
@@ -56,29 +64,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         currentDestinationFolder.close()
 
 
-
-            
-
     def exportObject(self):
-        thingsQuantity = -1
-        matterNamesList = []
         CurrentOBJ = open("variables/currentOBJ.txt")
-        index = CurrentOBJ.read()
+        ObjPath = CurrentOBJ.read()
         CurrentOBJ.close()
         currentDestinationFolder = open("variables/currentDestinationFolder.txt")
         TargetPath = currentDestinationFolder.read()
         currentDestinationFolder.close()
 
-        for root, _, files in os.walk("things"):
-            thingsQuantity += 1
-            ncutname = root
-            cutname = ncutname.split("/")
-            matterName = cutname[-1]
-            matterNamesList.append(matterName)
+        SourcePath = ObjPath
 
-        SourcePath = str(f"things/{matterNamesList[int(index)]}")
-
-        destination_subfolder = os.path.join(TargetPath, matterNamesList[int(index)])
+        destination_subfolder = os.path.join(TargetPath, ObjPath)
 
         if not os.path.exists(destination_subfolder):
             os.makedirs(destination_subfolder)
@@ -93,7 +89,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 shutil.copy2(src, dest)
                 print("All files exported with shutil.copy2")
 
-            self.displayNotif(f"Files exported to {dest}", 1)
+            self.displayNotif(f"Files exported !", 1)
 
     #Completed
     def displayNotif(self, text, state):
@@ -139,6 +135,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.tablist.setCurrentIndex(0)
         print("Button pressed: Back to list")
 
+    def openManageTagsTab(self):
+        self.tablist.setCurrentIndex(2)
 
     #Completed
     def openThingsFolder(self):
@@ -148,21 +146,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     #Completed
     def delOBJ(self):
-        thingsQuantity = -1
-        matterNamesList = []
         CurrentOBJ = open("variables/currentOBJ.txt")
-        index = CurrentOBJ.read()
+        ObjPath = CurrentOBJ.read()
         CurrentOBJ.close()
 
-        for root, _, files in os.walk("things"):
-            thingsQuantity += 1
-            ncutname = root
-            cutname = ncutname.split("/")
-            matterName = cutname[-1]
-            matterNamesList.append(matterName)
-        path = str(f"things/{matterNamesList[int(index)]}")
-        shutil.rmtree(path)
-        print(f'Folder {path} and its content removed')
+        shutil.rmtree(ObjPath)
+        print(f'Folder {ObjPath} and its content removed')
         self.displayNotif("Deleted !", 1)
         self.back2list()
         self.refrechApp()
@@ -170,42 +159,132 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     #Completed
     def openOBJFolder(self):
-        thingsQuantity = -1
-        matterNamesList = []
         CurrentOBJ = open("variables/currentOBJ.txt")
-        index = CurrentOBJ.read()
+        ObjPath = CurrentOBJ.read()
         CurrentOBJ.close()
 
-        for root, _, files in os.walk("things"):
-            thingsQuantity += 1
-            ncutname = root
-            cutname = ncutname.split("/")
-            matterName = cutname[-1]
-            matterNamesList.append(matterName)
-
-
-        path = str(f"things/{matterNamesList[int(index)]}")
         opener = "open" if sys.platform == "darwin" else "xdg-open"
-        print("path for OPENOBJ:",path)
-        subprocess.call([opener, path])
+        print("path for OPENOBJ:",ObjPath)
+        subprocess.call([opener, ObjPath])
+
+
+    def PickColor(self):
+        color = QColorDialog.getColor()
+        self.TMColorHexEditor.setText(str(color.name()))
+        self.TMColorPreviewWidget.setStyleSheet(f"QWidget\u007b\n"
+f"    background-color: {color.name()};\n"
+"    padding: 2px 6px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 0px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"\u007d")
+
+    def updateTagManagement(self, isManual=None):
+        NewTagName = self.TMNameEditor.text()
+        NewTagColor = self.TMColorHexEditor.text()
+        if NewTagName:
+            try:
+                with open("tags/tags.json", 'r') as file:
+                    data = json.load(file)
+            except FileNotFoundError:
+                data = {"tags": []}
+
+            for tag in data['tags']:
+                if tag['name'].lower() == NewTagName.lower():
+                    print(f"Le tag '{NewTagName}' existe déjà.")
+                    return
+
+            new_tag = {
+                "name": NewTagName,
+                "color": NewTagColor,
+                "IsDeletable": str("True"),
+                "Objects": []
+            }
+
+            data['tags'].append(new_tag)
+
+            with open("tags/tags.json", 'w') as file:
+                json.dump(data, file, indent=4)
+
+        else:
+            if isManual:
+                self.displayNotif("Name field is empty",0)
+
+        self.tagBox.clear()
+        self.TMTagBox.clear()
+        self.OBJTagBox.clear()
+
+        with open("tags/tags.json", "r") as tagListFile:
+            tagData = json.load(tagListFile)
+
+        tagList = tagData.get("tags", [])
+        sortedTags = sorted(tagList, key=lambda tag: tag['name'].lower())
+
+        print("Tags detected ↓")
+        for tag in sortedTags:
+            print(tag['name'])
+            name = tag['name']
+            color = tag.get('color', '#2B2B2B')
+            self.tagBox.addItem(name)
+            self.TMTagBox.addItem(name)
+            self.OBJTagBox.addItem(name)
+            itemIndex = self.tagBox.count() - 1
+            qColor = QColor(color)
+            self.tagBox.setItemData(itemIndex, qColor, Qt.ItemDataRole.BackgroundRole)
+            self.TMTagBox.setItemData(itemIndex, qColor, Qt.ItemDataRole.BackgroundRole)
+            self.OBJTagBox.setItemData(itemIndex, qColor, Qt.ItemDataRole.BackgroundRole)
+            print(f"Tag: {name}, Color: {color}")
+
+    def fillTagManagementFields(self, s):
+        TagColor = "#45CE7F"
+        try:
+            with open("tags/tags.json", "r") as file:
+                data = json.load(file)
+        except FileNotFoundError:
+            print(f"Tag file not found")
+            return None
+
+        for tag in data.get("tags", []):
+            if tag['name'].lower() == s.lower():
+                TagColor = tag.get('color', None)
+
+
+        print(f"Selected Tag: {s}")
+        self.TMNameEditor.setText(s)
+        self.TMColorHexEditor.setText(TagColor)
+        self.TMColorPreviewWidget.setStyleSheet(f"QWidget\u007b\n"
+f"    background-color: {TagColor};\n"
+"    padding: 2px 6px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 0px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"\u007d")
+        print(f"background-color:{s};")
+
+    def clearTagManagementFields(self):
+        self.TMNameEditor.setText("")
+        self.TMColorHexEditor.setText("")
+
 
 
     #Completed
-    def refrechApp(self):
+    def refrechApp(self, filter = ""):
         print("--Start app refresh--")
-
-        self.tagBox.clear()
-        self.tagBox.addItem("All")
-        tagListFile = open("tags/tags.txt")
-        tagListRaw = tagListFile.read()
-        tagListCool = tagListRaw.split(";")
-        tagListCool.sort()
-        for i in tagListCool:
-            self.tagBox.addItem(i)
-            print("New tag loaded ↓",i)
-
+        #Update tag combobox
+        self.updateTagManagement(False)
+        #Clear SearchBar
         self.SearchBar.setText("")
-        #clear list:
+        #Clear list:
         layout = self.scrollAreaWidgetContents.layout()
         if layout:
             while layout.count():
@@ -219,27 +298,51 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         matterNamesList = []
         imagePathList = []
         contentList = []
+        print("List of files found → ")
         for root, _, files in os.walk("things"):
+            _.sort(key=str.lower)
+            if not files:
+                continue
+            filtered_files = [f for f in files if filter.lower() in f.lower()]
+
+            if not filtered_files:
+                continue
+
             thingsQuantity += 1
-            ncutname = root
-            cutname = ncutname.split("/")
-            matterName = cutname[-1]
+
+            matterName = os.path.basename(root)
             matterNamesList.append(matterName)
-            print("Material found → ", matterName)
+            print(matterName)
+
+            KeyWords = ["basecolor", "color", "diffuse", "albedo", "base_color", "diff"]
 
             ImageList = os.listdir(root)
             ImageList.sort()
-            path = str(f"things/{matterName}/{ImageList[1]}")
-            imagePathList.append(path)
+
+            BaseColorImage = None
+
+            for IMG in ImageList:
+                if any(mot in IMG.lower() for mot in KeyWords):
+                    BaseColorImage = os.path.join(root, IMG)
+                    break
+
+            if not BaseColorImage and ImageList:
+                BaseColorImage = os.path.join(root, ImageList[0])
+
+            imagePathList.append(BaseColorImage)
             contentList.append(len(ImageList))
+
 
         print(thingsQuantity,"materials have been found")
         print("List of path:",imagePathList)
+        #del matterNamesList[0]
+        print(len(matterNamesList))
+        print(matterNamesList)
+        print(len(imagePathList))
+        print(len(contentList))
 
 
-        del matterNamesList [0]
-
-        WidgetCycles = 1
+        WidgetCycles = 0
         for matterName in matterNamesList:
             matterWidget = QtWidgets.QWidget()
             ui_matterWidget = Ui_MatterWidget()
@@ -259,7 +362,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             ui_matterWidget.matterDescription.setText(f"Contains {contentList[WidgetCycles]} items")
             ui_matterWidget.openMatterButton.setText("Open")
             ui_matterWidget.openMatterButton.setObjectName(f"openMatterButton{WidgetCycles}")
-            ui_matterWidget.openMatterButton.clicked.connect(lambda checked, index=WidgetCycles: self.openObject(index))
+            #ui_matterWidget.openMatterButton.clicked.connect(lambda checked, index=WidgetCycles+1: self.openObject(index))
+            ui_matterWidget.openMatterButton.clicked.connect(lambda checked, OBJPath = str(f"things/{matterName}"): self.openSelectedObject(OBJPath))
+            print(f"Root name: {root}")
             self.scrollAreaWidgetContents.layout().addWidget(matterWidget)
             WidgetCycles += 1
            # print(f"QFrame \u007b background-image: url({imagePathList[WidgetCycles]});\u007d")
@@ -278,43 +383,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def manualRefreshApp(self):
         self.refrechApp()
         self.displayNotif("Refreshed !", 1)
-    #Completed
-    def openObject(self, index):
+
+
+    def openSelectedObject(self, ObjPath):
         self.progressBar.setValue(0)
-        #set the current obj for "openobj" fonction.
         setCurrentOBJ = open("variables/currentOBJ.txt", "w")
-        setCurrentOBJ.write(str(index))
+        setCurrentOBJ.write(ObjPath)
         setCurrentOBJ.close()
-
-        thingsQuantity = -1
-        matterNamesList = []
-        imagePathList = []
-        contentList = []
-        for root, _, files in os.walk("things"):
-            thingsQuantity += 1
-            ncutname = root
-            cutname = ncutname.split("/")
-            matterName = cutname[-1]
-            matterNamesList.append(matterName)
-
-            ImageList = os.listdir(root)
-            ImageList.sort()
-            path = str(f"things/{matterName}/{ImageList[1]}")
-            imagePathList.append(path)
-            contentList.append(len(ImageList))
-            #///////////////////
-
-        self.progressBar.setValue(30)
-        self.tablist.setCurrentIndex(1)
-        print("Button pressed: openMatterButton", index)
-        self.OBJObjectName.setText(matterNamesList[index])
-        self.OBJObjectDesc.setText(f"Contains {contentList[index]} items")
-        pathList = []
-        imagePathList2 = []
-        for root, _, files in os.walk("things"):
-            pathList.append(root)
-        imagesList = os.listdir(pathList[index])
-
         #clear image container
         layout = self.OBJPicturesContainer.layout()
         if layout:
@@ -325,10 +400,33 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     widget.setParent(None)
                     widget.deleteLater()
 
+        #Open Object Tab
+        self.tablist.setCurrentIndex(1)
 
-        self.progressBar.setValue(60)
-        tilesize = int(900 / len(imagesList))
-        for image in imagesList:
+        #Get Object infos and apply to text widgets
+        SplittedPath = ObjPath.split("/")
+        objectName = SplittedPath[-1]
+        print(f"Selected Object Name ---------> {objectName}")
+        self.OBJObjectName.setText(objectName)
+        numberFiles = len(os.listdir(ObjPath))
+        objectInfo = str(f"{numberFiles} images inside")
+        print(f"Selected Object Info ---------> {objectInfo}")
+        self.OBJObjectDesc.setText(objectInfo)
+
+        #Get images path
+        images = []
+        for path in os.listdir(ObjPath):
+            # check if current path is a file
+            if os.path.isfile(os.path.join(ObjPath, path)):
+                images.append(f"{ObjPath}/{path}")
+        print(f"Images (path) --> {images}")
+
+        self.progressBar.setValue(10)
+
+        #Put images in OBJPicturesContainer
+        tilesize = int(900 / len(images))
+        progression = 10
+        for image in images:
             self.OBJlabel_ = QtWidgets.QLabel(parent=self.OBJPicturesContainer)
             sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
             sizePolicy.setHorizontalStretch(0)
@@ -338,19 +436,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.OBJlabel_.setMinimumSize(QtCore.QSize(tilesize, tilesize))
             self.OBJlabel_.setMaximumSize(QtCore.QSize(tilesize, tilesize))
             self.OBJlabel_.setText("")
-            url = str(f"{pathList[index]}/{image}")
-            print(url)
-            #self.OBJlabel_.setPixmap(QtGui.QPixmap(url))
-            self.OBJlabel_.setStyleSheet(f"border-radius: 15px; background-image: url({url})")
+            # self.OBJlabel_.setPixmap(QtGui.QPixmap(image))
+            self.OBJlabel_.setStyleSheet(f"border-radius: 15px; background-image: url({image})")
             self.OBJlabel_.setScaledContents(True)
             self.OBJlabel_.setObjectName(f"OBJlabel_")
             self.horizontalLayout_2.addWidget(self.OBJlabel_)
             self.verticalLayout_6.addWidget(self.OBJPicturesContainer)
+            progression += 80/len(images)
+            self.progressBar.setValue(int(progression))
 
         self.progressBar.setValue(100)
 
 
-    #Not Completed
+
     def doSearch(self):
         content = self.SearchBar.text()
         print("Search executed:", content)
@@ -365,7 +463,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 if widget:
                     widget.setParent(None)
                     widget.deleteLater()
-
+        self.refrechApp(str(content))
 
 
 

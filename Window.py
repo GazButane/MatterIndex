@@ -148,8 +148,8 @@ class Ui_MainWindow(object):
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
         self.centralwidget.setPalette(palette)
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
@@ -174,7 +174,8 @@ class Ui_MainWindow(object):
 "    border-width: 1px;\n"
 "    border-radius: 15px;\n"
 "    font-family:\'Courier New\', Courier, monospace;\n"
-"    margin: 10px;")
+"    margin: 10px;\n"
+"margin-bottom: 0px;")
         self.SearchBar.setFrame(True)
         self.SearchBar.setObjectName("SearchBar")
         self.verticalLayout.addWidget(self.SearchBar)
@@ -200,6 +201,7 @@ class Ui_MainWindow(object):
 "    border-radius: 15px;\n"
 "    font-family:\'Courier New\', Courier, monospace;\n"
 "    margin: 10px;\n"
+"    margin-top: 0px;\n"
 "}\n"
 "\n"
 ":hover{\n"
@@ -224,7 +226,8 @@ class Ui_MainWindow(object):
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.tagBox.setFont(font)
-        self.tagBox.setStyleSheet("color: rgb(218, 218, 218);\n"
+        self.tagBox.setStyleSheet("QComboBox{\n"
+"color: rgb(218, 218, 218);\n"
 "    background-color: rgba(0, 0, 0, 0.37);\n"
 "    padding: 6px 20px;\n"
 "    text-align: center;\n"
@@ -234,10 +237,38 @@ class Ui_MainWindow(object):
 "    border-width: 1px;\n"
 "    border-radius: 15px;\n"
 "    font-family:\'Courier New\', Courier, monospace;\n"
-"    margin: 10px;")
+"    margin: 10px;\n"
+"}")
         self.tagBox.setObjectName("tagBox")
-        self.tagBox.addItem("")
         self.verticalLayout.addWidget(self.tagBox)
+        self.ManageTagsButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.ManageTagsButton.setFont(font)
+        self.ManageTagsButton.setStyleSheet("QPushButton{\n"
+"\n"
+"color: rgb(218, 218, 218);\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 7px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"    margin-top: 0px;\n"
+"}\n"
+"\n"
+":hover{\n"
+"background-color:black;\n"
+"}")
+        self.ManageTagsButton.setObjectName("ManageTagsButton")
+        self.verticalLayout.addWidget(self.ManageTagsButton)
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -252,10 +283,8 @@ class Ui_MainWindow(object):
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        spacerItem = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout.addItem(spacerItem)
-        spacerItem1 = QtWidgets.QSpacerItem(200, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.verticalLayout.addItem(spacerItem1)
         self.notifFrame = QtWidgets.QFrame(parent=self.centralwidget)
         self.notifFrame.setStyleSheet("QFrame{\n"
 "    background-color: #246EDB;\n"
@@ -470,8 +499,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout_2.addWidget(self.scrollArea)
-        spacerItem2 = QtWidgets.QSpacerItem(3000, 5, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.verticalLayout_2.addItem(spacerItem2)
+        spacerItem1 = QtWidgets.QSpacerItem(3000, 5, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.verticalLayout_2.addItem(spacerItem1)
         self.tablist.addTab(self.List, "")
         self.Object = QtWidgets.QWidget()
         self.Object.setStyleSheet("")
@@ -635,8 +664,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.ExportButton)
         self.verticalLayout_5.addWidget(self.widget)
         self.verticalLayout_6.addLayout(self.verticalLayout_5)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.verticalLayout_6.addItem(spacerItem3)
         self.label_8 = QtWidgets.QLabel(parent=self.Object)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -657,51 +684,13 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.TagManagementWidget.sizePolicy().hasHeightForWidth())
         self.TagManagementWidget.setSizePolicy(sizePolicy)
-        self.TagManagementWidget.setMinimumSize(QtCore.QSize(0, 20))
+        self.TagManagementWidget.setMinimumSize(QtCore.QSize(0, 70))
         self.TagManagementWidget.setMaximumSize(QtCore.QSize(16777215, 51))
         self.TagManagementWidget.setStyleSheet("margin: 0px;\n"
 "padding: 0px;")
         self.TagManagementWidget.setObjectName("TagManagementWidget")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.TagManagementWidget)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.TagFrame = QtWidgets.QFrame(parent=self.TagManagementWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.TagFrame.sizePolicy().hasHeightForWidth())
-        self.TagFrame.setSizePolicy(sizePolicy)
-        self.TagFrame.setStyleSheet("QFrame{\n"
-"    background-color: #CE7345;\n"
-"     padding: 0px 0px;\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    border-color: grey;\n"
-"    border-style:solid;\n"
-"    border-width: 0px;\n"
-"    border-radius: 15px;\n"
-"    margin: 0px;\n"
-"}")
-        self.TagFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.TagFrame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.TagFrame.setObjectName("TagFrame")
-        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.TagFrame)
-        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
-        self.TagLabel = QtWidgets.QLabel(parent=self.TagFrame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.TagLabel.sizePolicy().hasHeightForWidth())
-        self.TagLabel.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("Comfortaa")
-        font.setBold(False)
-        font.setUnderline(False)
-        font.setStrikeOut(False)
-        self.TagLabel.setFont(font)
-        self.TagLabel.setStyleSheet("padding-top: 0px;")
-        self.TagLabel.setObjectName("TagLabel")
-        self.horizontalLayout_9.addWidget(self.TagLabel)
-        self.horizontalLayout_7.addWidget(self.TagFrame)
         self.TagEditButton = QtWidgets.QPushButton(parent=self.TagManagementWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -709,10 +698,10 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.TagEditButton.sizePolicy().hasHeightForWidth())
         self.TagEditButton.setSizePolicy(sizePolicy)
         self.TagEditButton.setMinimumSize(QtCore.QSize(0, 20))
-        self.TagEditButton.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.TagEditButton.setMaximumSize(QtCore.QSize(16777215, 35))
         font = QtGui.QFont()
-        font.setFamily("Courier New")
-        font.setPointSize(25)
+        font.setFamily("Comfortaa")
+        font.setPointSize(10)
         font.setBold(False)
         font.setUnderline(False)
         font.setStrikeOut(False)
@@ -721,24 +710,53 @@ class Ui_MainWindow(object):
 "background-color:black;\n"
 "}\n"
 "QPushButton{\n"
-"    color: white;\n"
-"    background-color: rgba(0, 0, 0, 0.37);\n"
-"    padding: 7px 20px;\n"
+"background-color: #247C49;\n"
+"     padding: 0px 10px;\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
 "    border-color: grey;\n"
 "    border-style:solid;\n"
-"    border-width: 1px;\n"
-"    border-radius: 15px;\n"
-"    font-family:\'Courier New\', Courier, monospace;\n"
+"    border-width: 0px;\n"
+"    border-radius: 5px;\n"
 "    margin: 0px;\n"
-"margin-left: 0px;\n"
 "}")
         self.TagEditButton.setObjectName("TagEditButton")
         self.horizontalLayout_7.addWidget(self.TagEditButton)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem4)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem2)
+        self.label_9 = QtWidgets.QLabel(parent=self.TagManagementWidget)
+        font = QtGui.QFont()
+        font.setFamily("Comfortaa")
+        font.setPointSize(12)
+        self.label_9.setFont(font)
+        self.label_9.setObjectName("label_9")
+        self.horizontalLayout_7.addWidget(self.label_9)
+        self.OBJTagBox = QtWidgets.QComboBox(parent=self.TagManagementWidget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.OBJTagBox.setFont(font)
+        self.OBJTagBox.setStyleSheet("QComboBox{\n"
+"color: rgb(218, 218, 218);\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 6px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"   border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"}")
+        self.OBJTagBox.setObjectName("OBJTagBox")
+        self.OBJTagBox.addItem("")
+        self.horizontalLayout_7.addWidget(self.OBJTagBox)
         self.verticalLayout_6.addWidget(self.TagManagementWidget)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_6.addItem(spacerItem3)
         self.OBJPicturesContainer = QtWidgets.QWidget(parent=self.Object)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -778,8 +796,285 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.OBJlabel_1)
         self.verticalLayout_6.addWidget(self.OBJPicturesContainer)
         self.tablist.addTab(self.Object, "")
+        self.Tag_Management = QtWidgets.QWidget()
+        self.Tag_Management.setObjectName("Tag_Management")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.Tag_Management)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.frame = QtWidgets.QFrame(parent=self.Tag_Management)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy)
+        self.frame.setMinimumSize(QtCore.QSize(0, 100))
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame.setObjectName("frame")
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.label_4 = QtWidgets.QLabel(parent=self.frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
+        self.label_4.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Comfortaa")
+        font.setPointSize(24)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName("label_4")
+        self.verticalLayout_8.addWidget(self.label_4)
+        self.verticalLayout_7.addWidget(self.frame)
+        self.frame_2 = QtWidgets.QFrame(parent=self.Tag_Management)
+        self.frame_2.setMinimumSize(QtCore.QSize(0, 50))
+        self.frame_2.setStyleSheet("QPushButton{\n"
+"color: rgb(218, 218, 218);\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 7px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"    margin-bottom: 0px;\n"
+"    margin-top: 0px;\n"
+"}")
+        self.frame_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame_2)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.back2listButton_2 = QtWidgets.QPushButton(parent=self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.back2listButton_2.setFont(font)
+        self.back2listButton_2.setObjectName("back2listButton_2")
+        self.horizontalLayout_4.addWidget(self.back2listButton_2)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem4)
+        self.label_10 = QtWidgets.QLabel(parent=self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Comfortaa")
+        font.setPointSize(12)
+        self.label_10.setFont(font)
+        self.label_10.setObjectName("label_10")
+        self.horizontalLayout_4.addWidget(self.label_10)
+        self.TMTagBox = QtWidgets.QComboBox(parent=self.frame_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.TMTagBox.sizePolicy().hasHeightForWidth())
+        self.TMTagBox.setSizePolicy(sizePolicy)
+        self.TMTagBox.setMinimumSize(QtCore.QSize(200, 0))
+        self.TMTagBox.setMaximumSize(QtCore.QSize(200, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.TMTagBox.setFont(font)
+        self.TMTagBox.setStyleSheet("QComboBox{\n"
+"color: rgb(218, 218, 218);\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 6px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"   border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"}")
+        self.TMTagBox.setObjectName("TMTagBox")
+        self.horizontalLayout_4.addWidget(self.TMTagBox)
+        self.TMSaveButton = QtWidgets.QPushButton(parent=self.frame_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.TMSaveButton.sizePolicy().hasHeightForWidth())
+        self.TMSaveButton.setSizePolicy(sizePolicy)
+        self.TMSaveButton.setMinimumSize(QtCore.QSize(300, 0))
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.TMSaveButton.setFont(font)
+        self.TMSaveButton.setStyleSheet(":hover{\n"
+"background-color:black;\n"
+"}\n"
+"QPushButton{\n"
+"    color: white;\n"
+"    background-color: #45CE7F;\n"
+"    padding: 7px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: #45CE7F;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"}")
+        self.TMSaveButton.setObjectName("TMSaveButton")
+        self.horizontalLayout_4.addWidget(self.TMSaveButton)
+        self.TMDeleteButton = QtWidgets.QPushButton(parent=self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.TMDeleteButton.setFont(font)
+        self.TMDeleteButton.setStyleSheet(":hover{\n"
+"background-color:black;\n"
+"border-color:#A40000;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: #A40000;\n"
+"}")
+        self.TMDeleteButton.setObjectName("TMDeleteButton")
+        self.horizontalLayout_4.addWidget(self.TMDeleteButton)
+        self.verticalLayout_7.addWidget(self.frame_2)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.verticalLayout_7.addItem(spacerItem5)
+        self.frame_3 = QtWidgets.QFrame(parent=self.Tag_Management)
+        self.frame_3.setMinimumSize(QtCore.QSize(0, 100))
+        self.frame_3.setStyleSheet("QPushButton{\n"
+"color: rgb(218, 218, 218);\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 7px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"    margin-bottom: 0px;\n"
+"    margin-top: 0px;\n"
+"}")
+        self.frame_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_3.setObjectName("frame_3")
+        self.gridLayout = QtWidgets.QGridLayout(self.frame_3)
+        self.gridLayout.setObjectName("gridLayout")
+        self.TMNameEditor = QtWidgets.QLineEdit(parent=self.frame_3)
+        self.TMNameEditor.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.TMNameEditor.setStyleSheet("color: rgb(218, 218, 218);\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 6px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;")
+        self.TMNameEditor.setObjectName("TMNameEditor")
+        self.gridLayout.addWidget(self.TMNameEditor, 0, 1, 1, 1)
+        self.label_6 = QtWidgets.QLabel(parent=self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Comfortaa")
+        font.setPointSize(12)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        self.gridLayout.addWidget(self.label_6, 1, 0, 1, 1)
+        self.label_5 = QtWidgets.QLabel(parent=self.frame_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
+        self.label_5.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Comfortaa")
+        font.setPointSize(12)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.gridLayout.addWidget(self.label_5, 0, 0, 1, 1)
+        self.label_7 = QtWidgets.QLabel(parent=self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Comfortaa")
+        font.setPointSize(12)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.gridLayout.addWidget(self.label_7, 1, 5, 1, 1)
+        self.TMColorSelectorButton = QtWidgets.QPushButton(parent=self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.TMColorSelectorButton.setFont(font)
+        self.TMColorSelectorButton.setStyleSheet("QPushButton{\n"
+"    border-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 0, 0, 255), stop:0.094 rgba(210, 224, 36, 255), stop:0.194 rgba(68, 193, 48, 255), stop:0.306 rgba(36, 204, 54, 255), stop:0.428 rgba(50, 235, 149, 255), stop:0.538 rgba(112, 175, 245, 255), stop:0.652 rgba(36, 73, 209, 255), stop:0.766 rgba(130, 21, 191, 255), stop:0.884 rgba(168, 42, 83, 255), stop:1 rgba(255, 0, 0, 255));\n"
+"    color: white;\n"
+"    border-width: 1px;\n"
+"}")
+        self.TMColorSelectorButton.setObjectName("TMColorSelectorButton")
+        self.gridLayout.addWidget(self.TMColorSelectorButton, 1, 1, 1, 1)
+        self.TMColorHexEditor = QtWidgets.QLineEdit(parent=self.frame_3)
+        self.TMColorHexEditor.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.TMColorHexEditor.setStyleSheet("color: rgb(218, 218, 218);\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 6px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;")
+        self.TMColorHexEditor.setObjectName("TMColorHexEditor")
+        self.gridLayout.addWidget(self.TMColorHexEditor, 1, 6, 1, 1)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout.addItem(spacerItem6, 1, 7, 1, 1)
+        self.TMClearFieldsButton = QtWidgets.QPushButton(parent=self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.TMClearFieldsButton.setFont(font)
+        self.TMClearFieldsButton.setObjectName("TMClearFieldsButton")
+        self.gridLayout.addWidget(self.TMClearFieldsButton, 2, 1, 1, 1)
+        self.verticalLayout_7.addWidget(self.frame_3)
+        self.TMColorPreviewWidget = QtWidgets.QWidget(parent=self.Tag_Management)
+        self.TMColorPreviewWidget.setMinimumSize(QtCore.QSize(0, 50))
+        self.TMColorPreviewWidget.setStyleSheet("QWidget{\n"
+"    background-color: #45CE7F;\n"
+"    padding: 2px 6px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 0px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"}")
+        self.TMColorPreviewWidget.setObjectName("TMColorPreviewWidget")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.TMColorPreviewWidget)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.label_11 = QtWidgets.QLabel(parent=self.TMColorPreviewWidget)
+        self.label_11.setStyleSheet("")
+        self.label_11.setObjectName("label_11")
+        self.horizontalLayout_8.addWidget(self.label_11)
+        self.verticalLayout_7.addWidget(self.TMColorPreviewWidget)
+        spacerItem7 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_7.addItem(spacerItem7)
+        self.tablist.addTab(self.Tag_Management, "")
         self.horizontalLayout.addWidget(self.tablist)
-        self.horizontalLayout_4.addLayout(self.horizontalLayout)
+        self.verticalLayout_4.addLayout(self.horizontalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1248, 20))
@@ -835,11 +1130,11 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Find by name:"))
         self.searchButton.setText(_translate("MainWindow", "Search"))
         self.label_3.setText(_translate("MainWindow", "Tags:"))
-        self.tagBox.setItemText(0, _translate("MainWindow", "All"))
+        self.ManageTagsButton.setText(_translate("MainWindow", "Manage →"))
         self.notifIcon.setText(_translate("MainWindow", "ⅰ"))
         self.notifText.setText(_translate("MainWindow", "Notification"))
         self.notifDelButton.setText(_translate("MainWindow", "✕"))
-        self.openfolderbutton.setText(_translate("MainWindow", "Open folder"))
+        self.openfolderbutton.setText(_translate("MainWindow", "Open root folder"))
         self.tablist.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.tablist.setTabText(self.tablist.indexOf(self.List), _translate("MainWindow", "List"))
         self.OBJObjectName.setText(_translate("MainWindow", "Object Name"))
@@ -849,10 +1144,24 @@ class Ui_MainWindow(object):
         self.back2listButton.setText(_translate("MainWindow", "← Back to list"))
         self.DestinationFolderButton.setText(_translate("MainWindow", "Destination folder"))
         self.ExportButton.setText(_translate("MainWindow", "Export"))
-        self.label_8.setText(_translate("MainWindow", "Tag management:"))
-        self.TagLabel.setText(_translate("MainWindow", "Miscellaneous"))
-        self.TagEditButton.setText(_translate("MainWindow", "✎"))
+        self.label_8.setText(_translate("MainWindow", "Tags:"))
+        self.TagEditButton.setText(_translate("MainWindow", "All"))
+        self.label_9.setText(_translate("MainWindow", "Add tag:"))
+        self.OBJTagBox.setItemText(0, _translate("MainWindow", "Add Tag"))
         self.tablist.setTabText(self.tablist.indexOf(self.Object), _translate("MainWindow", "Objet"))
+        self.label_4.setText(_translate("MainWindow", "Tag Management:"))
+        self.back2listButton_2.setText(_translate("MainWindow", "← Back to list"))
+        self.label_10.setText(_translate("MainWindow", "Tag:"))
+        self.TMSaveButton.setText(_translate("MainWindow", "Save"))
+        self.TMDeleteButton.setText(_translate("MainWindow", "Delete"))
+        self.label_6.setText(_translate("MainWindow", "Define color:"))
+        self.label_5.setText(_translate("MainWindow", "Define Name:"))
+        self.label_7.setText(_translate("MainWindow", "Hex:"))
+        self.TMColorSelectorButton.setText(_translate("MainWindow", "Color Palette..."))
+        self.TMColorHexEditor.setText(_translate("MainWindow", "#45CE7F"))
+        self.TMClearFieldsButton.setText(_translate("MainWindow", "Clear Fields"))
+        self.label_11.setText(_translate("MainWindow", "Color preview:"))
+        self.tablist.setTabText(self.tablist.indexOf(self.Tag_Management), _translate("MainWindow", "Tag management"))
         self.menufile.setTitle(_translate("MainWindow", "File"))
         self.menuedit.setTitle(_translate("MainWindow", "Edit"))
         self.menutool.setTitle(_translate("MainWindow", "Tool"))

@@ -407,7 +407,7 @@
      </disabled>
     </palette>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_4">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -442,7 +442,8 @@
     border-width: 1px;
     border-radius: 15px;
     font-family:'Courier New', Courier, monospace;
-    margin: 10px;</string>
+    margin: 10px;
+margin-bottom: 0px;</string>
           </property>
           <property name="frame">
            <bool>true</bool>
@@ -477,6 +478,7 @@ color: rgb(218, 218, 218);
     border-radius: 15px;
     font-family:'Courier New', Courier, monospace;
     margin: 10px;
+	margin-top: 0px;
 }
 
 :hover{
@@ -521,7 +523,8 @@ background-color:black;
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">color: rgb(218, 218, 218);
+           <string notr="true">QComboBox{
+color: rgb(218, 218, 218);
     background-color: rgba(0, 0, 0, 0.37);
     padding: 6px 20px;
     text-align: center;
@@ -531,13 +534,45 @@ background-color:black;
     border-width: 1px;
     border-radius: 15px;
     font-family:'Courier New', Courier, monospace;
-    margin: 10px;</string>
+    margin: 10px;
+}</string>
           </property>
-          <item>
-           <property name="text">
-            <string>All</string>
-           </property>
-          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="ManageTagsButton">
+          <property name="font">
+           <font>
+            <family>Courier New</family>
+            <bold>true</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+
+color: rgb(218, 218, 218);
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-color: grey;
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 15px;
+    font-family:'Courier New', Courier, monospace;
+    margin: 10px;
+	margin-top: 0px;
+}
+
+:hover{
+background-color:black;
+}</string>
+          </property>
+          <property name="text">
+           <string>Manage →</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -577,23 +612,7 @@ background-color:black;
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>200</width>
-            <height>20</height>
+            <height>1</height>
            </size>
           </property>
          </spacer>
@@ -739,7 +758,7 @@ background-color:black;
 }</string>
           </property>
           <property name="text">
-           <string>Open folder</string>
+           <string>Open root folder</string>
           </property>
          </widget>
         </item>
@@ -1313,22 +1332,6 @@ QPushButton{
            </layout>
           </item>
           <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Expanding</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>0</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
            <widget class="QLabel" name="label_8">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
@@ -1352,7 +1355,7 @@ QPushButton{
              <string notr="true"/>
             </property>
             <property name="text">
-             <string>Tag management:</string>
+             <string>Tags:</string>
             </property>
            </widget>
           </item>
@@ -1367,7 +1370,7 @@ QPushButton{
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>20</height>
+              <height>70</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -1381,61 +1384,6 @@ QPushButton{
 padding: 0px;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_7">
-             <item>
-              <widget class="QFrame" name="TagFrame">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QFrame{
-	background-color: #CE7345;
-     padding: 0px 0px;
-    text-align: center;
-    text-decoration: none;
-	border-color: grey;
-    border-style:solid;
-    border-width: 0px;
-    border-radius: 15px;
-    margin: 0px;
-}</string>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_9">
-                <item>
-                 <widget class="QLabel" name="TagLabel">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Comfortaa</family>
-                    <bold>false</bold>
-                    <underline>false</underline>
-                    <strikeout>false</strikeout>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">padding-top: 0px;</string>
-                  </property>
-                  <property name="text">
-                   <string>Miscellaneous</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
              <item>
               <widget class="QPushButton" name="TagEditButton">
                <property name="sizePolicy">
@@ -1453,13 +1401,13 @@ padding: 0px;</string>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>50</height>
+                 <height>35</height>
                 </size>
                </property>
                <property name="font">
                 <font>
-                 <family>Courier New</family>
-                 <pointsize>25</pointsize>
+                 <family>Comfortaa</family>
+                 <pointsize>10</pointsize>
                  <bold>false</bold>
                  <underline>false</underline>
                  <strikeout>false</strikeout>
@@ -1470,22 +1418,19 @@ padding: 0px;</string>
 background-color:black;
 }
 QPushButton{
-	color: white;
-    background-color: rgba(0, 0, 0, 0.37);
-    padding: 7px 20px;
+background-color: #247C49;
+     padding: 0px 10px;
     text-align: center;
     text-decoration: none;
-    border-color: grey;
+	border-color: grey;
     border-style:solid;
-    border-width: 1px;
-    border-radius: 15px;
-    font-family:'Courier New', Courier, monospace;
+    border-width: 0px;
+    border-radius: 5px;
     margin: 0px;
-margin-left: 0px;
 }</string>
                </property>
                <property name="text">
-                <string>✎</string>
+                <string>All</string>
                </property>
               </widget>
              </item>
@@ -1502,8 +1447,69 @@ margin-left: 0px;
                </property>
               </spacer>
              </item>
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="font">
+                <font>
+                 <family>Comfortaa</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Add tag:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="OBJTagBox">
+               <property name="font">
+                <font>
+                 <family>Courier New</family>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QComboBox{
+color: rgb(218, 218, 218);
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+   border-color: grey;
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 15px;
+    font-family:'Courier New', Courier, monospace;
+    margin: 10px;
+}</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Add Tag</string>
+                </property>
+               </item>
+              </widget>
+             </item>
             </layout>
            </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <widget class="QWidget" name="OBJPicturesContainer" native="true">
@@ -1569,6 +1575,487 @@ color: rgb(218, 218, 218);
              </item>
             </layout>
            </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="Tag_Management">
+         <attribute name="title">
+          <string>Tag management</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QFrame" name="frame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Comfortaa</family>
+                 <pointsize>24</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Tag Management:</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+color: rgb(218, 218, 218);
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-color: grey;
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 15px;
+    font-family:'Courier New', Courier, monospace;
+    margin: 10px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QPushButton" name="back2listButton_2">
+               <property name="font">
+                <font>
+                 <family>Courier New</family>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
+               <property name="text">
+                <string>← Back to list</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_10">
+               <property name="font">
+                <font>
+                 <family>Comfortaa</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Tag:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="TMTagBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Courier New</family>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QComboBox{
+color: rgb(218, 218, 218);
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+   border-color: grey;
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 15px;
+    font-family:'Courier New', Courier, monospace;
+    margin: 10px;
+}</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="TMSaveButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>300</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Courier New</family>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">:hover{
+background-color:black;
+}
+QPushButton{
+	color: white;
+    background-color: #45CE7F;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-color: #45CE7F;
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 15px;
+    font-family:'Courier New', Courier, monospace;
+    margin: 10px;
+}</string>
+               </property>
+               <property name="text">
+                <string>Save</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="TMDeleteButton">
+               <property name="font">
+                <font>
+                 <family>Courier New</family>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">:hover{
+background-color:black;
+border-color:#A40000;
+}
+QPushButton{
+background-color: #A40000;
+}</string>
+               </property>
+               <property name="text">
+                <string>Delete</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_3">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+color: rgb(218, 218, 218);
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-color: grey;
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 15px;
+    font-family:'Courier New', Courier, monospace;
+    margin: 10px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="TMNameEditor">
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(218, 218, 218);
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-color: grey;
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 15px;
+    font-family:'Courier New', Courier, monospace;
+    margin: 10px;</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="font">
+                <font>
+                 <family>Comfortaa</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Define color:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_5">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Comfortaa</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Define Name:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="5">
+              <widget class="QLabel" name="label_7">
+               <property name="font">
+                <font>
+                 <family>Comfortaa</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Hex:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QPushButton" name="TMColorSelectorButton">
+               <property name="font">
+                <font>
+                 <family>Courier New</family>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	border-color:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:1, stop:0 rgba(255, 0, 0, 255), stop:0.094 rgba(210, 224, 36, 255), stop:0.194 rgba(68, 193, 48, 255), stop:0.306 rgba(36, 204, 54, 255), stop:0.428 rgba(50, 235, 149, 255), stop:0.538 rgba(112, 175, 245, 255), stop:0.652 rgba(36, 73, 209, 255), stop:0.766 rgba(130, 21, 191, 255), stop:0.884 rgba(168, 42, 83, 255), stop:1 rgba(255, 0, 0, 255));
+	color: white;
+	border-width: 1px;
+}</string>
+               </property>
+               <property name="text">
+                <string>Color Palette...</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="6">
+              <widget class="QLineEdit" name="TMColorHexEditor">
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(218, 218, 218);
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-color: grey;
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 15px;
+    font-family:'Courier New', Courier, monospace;
+    margin: 10px;</string>
+               </property>
+               <property name="text">
+                <string>#45CE7F</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="7">
+              <spacer name="horizontalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="2" column="1">
+              <widget class="QPushButton" name="TMClearFieldsButton">
+               <property name="font">
+                <font>
+                 <family>Courier New</family>
+                 <bold>true</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                </font>
+               </property>
+               <property name="text">
+                <string>Clear Fields</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="TMColorPreviewWidget" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	background-color: #45CE7F;
+    padding: 2px 6px;
+    text-align: center;
+    text-decoration: none;
+	border-color: grey;
+    border-style:solid;
+    border-width: 0px;
+    border-radius: 15px;
+    font-family:'Courier New', Courier, monospace;
+    margin: 10px;
+}</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QLabel" name="label_11">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Color preview:</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </widget>
