@@ -43,11 +43,9 @@ python3 main.py
 This software is under development and many features are not yet available. Furthermore, the tests are only performed on Linux, so MatterIndex may be unstable on Windows and MacOs.
 ## Screenshots:
 
-![listtab](https://github.com/GazButane/MatterIndex/assets/100444508/0005d585-af5c-402f-bf17-a5f6a24fc622)
+![LISTTAB](https://github.com/user-attachments/assets/1da6ab28-8ea1-4492-a026-ae81650421eb)
 
-![objtab](https://github.com/GazButane/MatterIndex/assets/100444508/e1363ad1-8ac4-4058-a3af-27c67dab84cf)
+![OBJTAB](https://github.com/user-attachments/assets/8520c8dd-0984-4e60-afbf-14ec180ce66a)
 
 
-## Authors
-
-- [@GazButane](https://www.github.com/GazButane)
+## Authors- [@GazButane](https://www.github.com/GazButane)
