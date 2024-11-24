@@ -45,6 +45,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.TMTagBox.currentTextChanged.connect(self.fillTagManagementFields)
         self.TMColorSelectorButton.clicked.connect(self.PickColor)
         self.TMClearFieldsButton.clicked.connect(self.clearTagManagementFields)
+        self.OBJTagBox.currentTextChanged.connect(self.addTagToObject)
 
 
 
@@ -138,6 +139,90 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def openManageTagsTab(self):
         self.tablist.setCurrentIndex(2)
 
+
+    def displayTag(self, tagName):
+        try:
+            with open("tags/tags.json", "r") as file:
+                data = json.load(file)
+        except FileNotFoundError:
+            print(f"Tag file not found")
+            return None
+
+        for tag in data.get("tags", []):
+            if tag['name'].lower() == tagName.lower():
+                TagColor = tag.get('color', None)
+
+                # add tag to TagManagementWidget
+                self.TagEditButton = QtWidgets.QPushButton(parent=self.OBJWidgetContainer)
+                sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum,
+                                                   QtWidgets.QSizePolicy.Policy.Fixed)
+                sizePolicy.setHorizontalStretch(0)
+                sizePolicy.setVerticalStretch(0)
+                sizePolicy.setHeightForWidth(self.TagEditButton.sizePolicy().hasHeightForWidth())
+                self.TagEditButton.setSizePolicy(sizePolicy)
+                self.TagEditButton.setMinimumSize(QtCore.QSize(0, 20))
+                self.TagEditButton.setMaximumSize(QtCore.QSize(16777215, 35))
+                font = QtGui.QFont()
+                font.setFamily("Comfortaa")
+                font.setPointSize(10)
+                font.setBold(False)
+                font.setUnderline(False)
+                font.setStrikeOut(False)
+                self.TagEditButton.setFont(font)
+                self.TagEditButton.setText(tagName)
+                self.TagEditButton.setStyleSheet(f":hover\u007b\n"
+                                                 "background-color:black;\n"
+                                                 "border-width: 1px;\n"
+                                                 "border-color: #A40000;\n"
+                                                 "\u007d\n"
+                                                 "QPushButton\u007b\n"
+                                                 f"background-color: {TagColor};\n"
+                                                 "     padding: 0px 10px;\n"
+                                                 "    text-align: center;\n"
+                                                 "    text-decoration: none;\n"
+                                                 "    border-color: grey;\n"
+                                                 "    border-style:solid;\n"
+                                                 "    border-width: 0px;\n"
+                                                 "    border-radius: 5px;\n"
+                                                 "    margin: 0px;\n"
+                                                 "\u007d")
+                self.TagEditButton.setObjectName(f"TagEditButton_{tagName}")
+                self.horizontalLayout_9.addWidget(self.TagEditButton)
+                # self.horizontalLayout_7.addWidget(self.OBJWidgetContainer)
+
+    def addTagToObject(self, s):
+        CurrentOBJ = open("variables/currentOBJ.txt")
+        ObjPath = CurrentOBJ.read()
+        CurrentOBJ.close()
+
+        alreadyExist = self.OBJWidgetContainer.findChild(QPushButton, f"TagEditButton_{s}")
+        print(f"Already exist ? -> {alreadyExist}")
+        if alreadyExist:
+            self.displayNotif("This tag is already assigned for this object", 0)
+        else:
+            self.displayTag(s)
+
+            with open("tags/tags.json", "r") as file:
+                data = json.load(file)
+
+            for tag in data["tags"]:
+                if tag["name"] == s:
+                    if ObjPath not in tag["Objects"]:
+                        tag["Objects"].append(ObjPath)
+                    else:
+                        print(f"{ObjPath} already assigned to '{s}'.")
+                    break
+            else:
+                print(f"ERR: Tag '{s}' not found")
+
+            with open("tags/tags.json", "w") as file:
+                json.dump(data, file, indent=4)
+
+            print("Tags.json Updated")
+
+
+
+
     #Completed
     def openThingsFolder(self):
         opener = "open" if sys.platform == "darwin" else "xdg-open"
@@ -196,7 +281,6 @@ f"    background-color: {color.name()};\n"
 
             for tag in data['tags']:
                 if tag['name'].lower() == NewTagName.lower():
-                    print(f"Le tag '{NewTagName}' existe déjà.")
                     return
 
             new_tag = {
@@ -400,6 +484,16 @@ f"    background-color: {TagColor};\n"
                     widget.setParent(None)
                     widget.deleteLater()
 
+        # clear Tag container
+        layout = self.OBJWidgetContainer.layout()
+        if layout:
+            while layout.count():
+                item = layout.takeAt(0)
+                widget = item.widget()
+                if widget:
+                    widget.setParent(None)
+                    widget.deleteLater()
+
         #Open Object Tab
         self.tablist.setCurrentIndex(1)
 
@@ -412,6 +506,18 @@ f"    background-color: {TagColor};\n"
         objectInfo = str(f"{numberFiles} images inside")
         print(f"Selected Object Info ---------> {objectInfo}")
         self.OBJObjectDesc.setText(objectInfo)
+
+        #Get list of tags
+        with open("tags/tags.json", "r") as file:
+            data = json.load(file)
+        listOfTags = [
+            tag["name"]
+            for tag in data["tags"]
+            if ObjPath in tag["Objects"] or "allObjects" in tag["Objects"]
+        ]
+
+        for tag in listOfTags:
+            self.displayTag(tag)
 
         #Get images path
         images = []
@@ -470,7 +576,7 @@ f"    background-color: {TagColor};\n"
 app = QtWidgets.QApplication(sys.argv)
 splash = LaunchFrame()
 splash.show()
-time.sleep(0.5)
+#time.sleep(0.5)
 window = MainWindow()
 splash.finish(window)
 window.show()
