@@ -1,6 +1,0 @@
-wood;
-concrete;
-metal;
-grass;
-walls;
-plaster;

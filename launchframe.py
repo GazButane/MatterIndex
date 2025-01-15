@@ -118,7 +118,7 @@ class Ui_launchframe(object):
         launchframe.setStyleSheet("#launchframe{\n"
 "color: white;\n"
 "margin:0px;\n"
-"background-color: black;\n"
+"background-image: url(ressources/cube.png) ;\n"
 "}")
         self.verticalWidget = QtWidgets.QWidget(parent=launchframe)
         self.verticalWidget.setGeometry(QtCore.QRect(9, 9, 386, 200))

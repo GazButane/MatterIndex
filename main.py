@@ -46,6 +46,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.TMColorSelectorButton.clicked.connect(self.PickColor)
         self.TMClearFieldsButton.clicked.connect(self.clearTagManagementFields)
         self.OBJTagBox.currentTextChanged.connect(self.addTagToObject)
+        self.TMDeleteButton.clicked.connect(self.deleteTag)
 
 
 
@@ -92,7 +93,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
             self.displayNotif(f"Files exported !", 1)
 
-    #Completed
     def displayNotif(self, text, state):
         self.notifText.setText(text)
         if state == 1:
@@ -131,7 +131,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.notifFrame.setVisible(False)
 
 
-    #Completed
     def back2list(self):
         self.tablist.setCurrentIndex(0)
         print("Button pressed: Back to list")
@@ -187,8 +186,60 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                                                  "    margin: 0px;\n"
                                                  "\u007d")
                 self.TagEditButton.setObjectName(f"TagEditButton_{tagName}")
+                self.TagEditButton.clicked.connect(lambda checked, tag = tagName: self.removeTag(tag))
                 self.horizontalLayout_9.addWidget(self.TagEditButton)
                 # self.horizontalLayout_7.addWidget(self.OBJWidgetContainer)
+
+    def removeTag(self, tagName):
+        CurrentOBJ = open("variables/currentOBJ.txt")
+        ObjPath = CurrentOBJ.read()
+        CurrentOBJ.close()
+        print(tagName)
+
+        with open("tags/tags.json", 'r') as file:
+            data = json.load(file)
+
+        for tag in data['tags']:
+            if tag['name'] == tagName:
+                if ObjPath in tag['Objects']:
+                    tag['Objects'].remove(ObjPath)
+                    print(f"Removed '{ObjPath}' from '{tagName}' tag.")
+                else:
+                    print(f"Object '{ObjPath}' not found in '{tagName}' tag.")
+                break
+        else:
+            print(f"Tag '{tagName}' not found in the JSON file.")
+
+        with open("tags/tags.json", 'w') as file:
+            json.dump(data, file, indent=4)
+
+        self.openSelectedObject(ObjPath)
+
+
+    def deleteTag(self):
+        tagName = self.TMTagBox.currentText()
+
+        with open("tags/tags.json", 'r') as file:
+            data = json.load(file)
+
+        tagFound = False
+        for i, tag in enumerate(data['tags']):
+            if tag['name'] == tagName:
+                del data['tags'][i]
+                tag_found = True
+                print(f"Tag '{tagName}' has been removed.")
+                break
+
+        if not tagFound:
+            print(f"Tag '{tagName}' not found in the JSON file.")
+
+        with open("tags/tags.json", 'w') as file:
+            json.dump(data, file, indent=4)
+
+        self.clearTagManagementFields()
+        self.updateTagManagement(isManual=True)
+        self.displayNotif(f"Tag <<{tagName}>> deleted", 1)
+
 
     def addTagToObject(self, s):
         CurrentOBJ = open("variables/currentOBJ.txt")
@@ -223,13 +274,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 
-    #Completed
     def openThingsFolder(self):
         opener = "open" if sys.platform == "darwin" else "xdg-open"
         subprocess.call([opener, "things"])
 
 
-    #Completed
     def delOBJ(self):
         CurrentOBJ = open("variables/currentOBJ.txt")
         ObjPath = CurrentOBJ.read()
@@ -242,7 +291,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.refrechApp()
 
 
-    #Completed
     def openOBJFolder(self):
         CurrentOBJ = open("variables/currentOBJ.txt")
         ObjPath = CurrentOBJ.read()
@@ -361,7 +409,6 @@ f"    background-color: {TagColor};\n"
 
 
 
-    #Completed
     def refrechApp(self, filter = ""):
         print("--Start app refresh--")
         #Update tag combobox

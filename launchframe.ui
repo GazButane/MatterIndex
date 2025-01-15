@@ -319,7 +319,7 @@
    <string notr="true">#launchframe{
 color: white;
 margin:0px;
-background-color: black;
+background-image: url(ressources/cube.png) ;
 }</string>
   </property>
   <widget class="QWidget" name="verticalWidget" native="true">

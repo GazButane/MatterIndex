@@ -1014,12 +1014,13 @@ height: 5px;</string>
         <property name="whatsThis">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
         <property name="styleSheet">
-         <string notr="true">	color: white;
-	background-color: #242424;
-border-radius: 15px;
-
-</string>
+         <string notr="true">color: white;
+background-color: #242424;
+border-radius: 15px;</string>
         </property>
         <property name="tabPosition">
          <enum>QTabWidget::West</enum>
@@ -1030,8 +1031,23 @@ border-radius: 15px;
         <property name="currentIndex">
          <number>0</number>
         </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
         <property name="elideMode">
          <enum>Qt::ElideNone</enum>
+        </property>
+        <property name="documentMode">
+         <bool>false</bool>
+        </property>
+        <property name="tabsClosable">
+         <bool>false</bool>
+        </property>
+        <property name="tabBarAutoHide">
+         <bool>true</bool>
         </property>
         <widget class="QWidget" name="List">
          <property name="styleSheet">
@@ -2092,38 +2108,13 @@ color: rgb(218, 218, 218);
      <height>20</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menufile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionimport"/>
-    <addaction name="actionopen_folder"/>
-   </widget>
-   <widget class="QMenu" name="menuedit">
-    <property name="title">
-     <string>Edit</string>
-    </property>
-    <addaction name="actionconfigure"/>
-   </widget>
    <widget class="QMenu" name="menutool">
     <property name="title">
      <string>Tool</string>
     </property>
-    <addaction name="actionsearch"/>
     <addaction name="actionRefresh_app"/>
    </widget>
-   <widget class="QMenu" name="menuhelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-    <addaction name="actionwebsite"/>
-    <addaction name="actionabout"/>
-    <addaction name="actionexit"/>
-   </widget>
-   <addaction name="menufile"/>
-   <addaction name="menuedit"/>
    <addaction name="menutool"/>
-   <addaction name="menuhelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionimport">
