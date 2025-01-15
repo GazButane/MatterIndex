@@ -1,0 +1,12 @@
+{
+    "tags": [
+        {
+            "name": "All",
+            "color": "#247C49",
+            "IsDeletable": "False",
+            "Objects": [
+                "allObjects"
+            ]
+        }
+    ]
+}
