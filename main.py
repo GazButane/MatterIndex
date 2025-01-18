@@ -45,7 +45,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.TMTagBox.currentTextChanged.connect(self.fillTagManagementFields)
         self.TMColorSelectorButton.clicked.connect(self.PickColor)
         self.TMClearFieldsButton.clicked.connect(self.clearTagManagementFields)
-        self.OBJTagBox.currentTextChanged.connect(self.addTagToObject)
+        self.OBJ_AddTagToObjectButton.clicked.connect(self.addTagToObject)
         self.TMDeleteButton.clicked.connect(self.deleteTag)
 
 
@@ -241,7 +241,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.displayNotif(f"Tag <<{tagName}>> deleted", 1)
 
 
-    def addTagToObject(self, s):
+    def addTagToObject(self):
+        s = self.OBJTagBox.currentText()
         CurrentOBJ = open("variables/currentOBJ.txt")
         ObjPath = CurrentOBJ.read()
         CurrentOBJ.close()
@@ -270,8 +271,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 json.dump(data, file, indent=4)
 
             print("Tags.json Updated")
-
-
 
 
     def openThingsFolder(self):
@@ -411,8 +410,6 @@ f"    background-color: {TagColor};\n"
 
     def refrechApp(self, filter = ""):
         print("--Start app refresh--")
-        #Update tag combobox
-        self.updateTagManagement(False)
         #Clear SearchBar
         self.SearchBar.setText("")
         #Clear list:
@@ -430,14 +427,28 @@ f"    background-color: {TagColor};\n"
         imagePathList = []
         contentList = []
         print("List of files found → ")
-        for root, _, files in os.walk("things"):
-            _.sort(key=str.lower)
+        for root, folders, files in os.walk("things"):
+            #print(f"root -> {root} ; subfolder -> {folders} ; files -> {files}")
+            folders.sort(key=str.lower)
             if not files:
                 continue
-            filtered_files = [f for f in files if filter.lower() in f.lower()]
-
-            if not filtered_files:
+            filterByName = [f for f in files if filter.lower() in f.lower()]
+            if not filterByName:
                 continue
+
+            filterTag = self.tagBox.currentText()
+            with open("tags/tags.json", 'r') as file:
+                data = json.load(file)
+            tagFilterObjects = []
+            for i, tag in enumerate(data['tags']):
+                if tag['name'] == filterTag:
+                    tagFilterObjects = tag['Objects']
+
+            if not str(root) in tagFilterObjects and not str("allObjects") in tagFilterObjects:
+                continue
+
+
+
 
             thingsQuantity += 1
 
@@ -464,7 +475,7 @@ f"    background-color: {TagColor};\n"
             contentList.append(len(ImageList))
 
 
-        print(thingsQuantity,"materials have been found")
+        print(thingsQuantity,"textures found")
         print("List of path:",imagePathList)
         #del matterNamesList[0]
         print(len(matterNamesList))
@@ -507,6 +518,8 @@ f"    background-color: {TagColor};\n"
         getstartinfo = open("variables/startinfo.txt", "w")
         getstartinfo.write(str(1))
         getstartinfo.close()
+        # Update tag combobox
+        self.updateTagManagement(False)
 
         print("--Successful app refresh--")
 

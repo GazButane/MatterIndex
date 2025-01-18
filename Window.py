@@ -240,6 +240,7 @@ class Ui_MainWindow(object):
 "    margin: 10px;\n"
 "}")
         self.tagBox.setObjectName("tagBox")
+        self.tagBox.addItem("")
         self.verticalLayout.addWidget(self.tagBox)
         self.ManageTagsButton = QtWidgets.QPushButton(parent=self.centralwidget)
         font = QtGui.QFont()
@@ -692,7 +693,23 @@ class Ui_MainWindow(object):
         self.TagManagementWidget.setMinimumSize(QtCore.QSize(0, 70))
         self.TagManagementWidget.setMaximumSize(QtCore.QSize(16777215, 51))
         self.TagManagementWidget.setStyleSheet("margin: 0px;\n"
-"padding: 0px;")
+"padding: 0px;\n"
+"\n"
+"QPushButton{\n"
+"color: rgb(218, 218, 218);\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 7px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"    margin-bottom: 0px;\n"
+"    margin-top: 5px;\n"
+"}")
         self.TagManagementWidget.setObjectName("TagManagementWidget")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.TagManagementWidget)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
@@ -766,6 +783,28 @@ class Ui_MainWindow(object):
         self.OBJTagBox.setObjectName("OBJTagBox")
         self.OBJTagBox.addItem("")
         self.horizontalLayout_7.addWidget(self.OBJTagBox)
+        self.OBJ_AddTagToObjectButton = QtWidgets.QPushButton(parent=self.TagManagementWidget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.OBJ_AddTagToObjectButton.setFont(font)
+        self.OBJ_AddTagToObjectButton.setStyleSheet("QPushButton{\n"
+"    color: white;\n"
+"    background-color: #45CE7F;\n"
+"    padding: 7px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: #45CE7F;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"}")
+        self.OBJ_AddTagToObjectButton.setObjectName("OBJ_AddTagToObjectButton")
+        self.horizontalLayout_7.addWidget(self.OBJ_AddTagToObjectButton)
         self.verticalLayout_6.addWidget(self.TagManagementWidget)
         spacerItem3 = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_6.addItem(spacerItem3)
@@ -1126,6 +1165,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Find by name:"))
         self.searchButton.setText(_translate("MainWindow", "Search"))
         self.label_3.setText(_translate("MainWindow", "Tags:"))
+        self.tagBox.setItemText(0, _translate("MainWindow", "All"))
         self.ManageTagsButton.setText(_translate("MainWindow", "Manage →"))
         self.notifIcon.setText(_translate("MainWindow", "ⅰ"))
         self.notifText.setText(_translate("MainWindow", "Notification"))
@@ -1144,6 +1184,7 @@ class Ui_MainWindow(object):
         self.TagEditButton.setText(_translate("MainWindow", "All"))
         self.label_9.setText(_translate("MainWindow", "Add tag:"))
         self.OBJTagBox.setItemText(0, _translate("MainWindow", "Add Tag"))
+        self.OBJ_AddTagToObjectButton.setText(_translate("MainWindow", "Add"))
         self.tablist.setTabText(self.tablist.indexOf(self.Object), _translate("MainWindow", "Objet"))
         self.label_4.setText(_translate("MainWindow", "Tag Management:"))
         self.back2listButton_2.setText(_translate("MainWindow", "← Back to list"))
