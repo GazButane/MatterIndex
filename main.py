@@ -56,14 +56,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         currentDatabase = open("variables/currentDatabase.txt", "r")
         sourceDirectory = currentDatabase.read()
         currentDatabase.close()
-        filesList = os.listdir(sourceDirectory)
-        if str("tags.json") in filesList:
-            print("--> tags.json found, finished")
-        else:
-            print("--> tags.json not found, creating a new one...")
-            shutil.copy("tagsJSON-template/tags.json", sourceDirectory)
-            print("--> tags.json created, finished")
-        print("")
+        try:
+            filesList = os.listdir(sourceDirectory)
+            if str("tags.json") in filesList:
+                print("--> tags.json found, finished")
+            else:
+                print("--> tags.json not found, creating a new one...")
+                shutil.copy("tagsJSON-template/tags.json", sourceDirectory)
+                print("--> tags.json created, finished")
+            print("")
+        except:
+            print("--> No Database selected, skip")
+
+
 
 
 
