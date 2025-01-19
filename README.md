@@ -1,7 +1,5 @@
+![GithubBanner](https://github.com/user-attachments/assets/c93cc747-2c1d-44b8-95ba-debf20f33efc)
 
-![logoMI-Text](https://github.com/GazButane/MatterIndex/assets/100444508/134f7572-18e6-4cbe-8b0c-02027707a48d)
-
-# Matter index:
 
 Stop using your file browser to search for the ideal texture for your 3D project: It's a waste of time and you risk missing what you're looking for...
 The solution? - Matter Index:
@@ -43,9 +41,8 @@ python3 main.py
 This software is under development and many features are not yet available. Furthermore, the tests are only performed on Linux, so MatterIndex may be unstable on Windows and MacOs.
 ## Screenshots:
 
-![LISTTAB](https://github.com/user-attachments/assets/1da6ab28-8ea1-4492-a026-ae81650421eb)
+![MI-ListTab](https://github.com/user-attachments/assets/783e5503-2351-4e99-9859-2d4bd5652499)
 
-![OBJTAB](https://github.com/user-attachments/assets/8520c8dd-0984-4e60-afbf-14ec180ce66a)
+![MI-ObjTab](https://github.com/user-attachments/assets/62fb907e-67da-4bba-8d1c-1d8ca1e3d249)
 
-
-## Authors- [@GazButane](https://www.github.com/GazButane)
+![MI-TagTab](https://github.com/user-attachments/assets/add87ddc-396e-4a15-92d7-317d7b20ea96)
