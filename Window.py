@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(66, 66, 66))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
@@ -28,16 +28,16 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(52, 52, 52))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Mid, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(76, 101, 150))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Highlight, brush)
-        brush = QtGui.QBrush(QtGui.QColor(66, 66, 66))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
@@ -46,10 +46,10 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(52, 52, 52))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Mid, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(76, 101, 150))
@@ -58,7 +58,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(66, 66, 66))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
@@ -73,20 +73,23 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
         MainWindow.setPalette(palette)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("logoMI.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("")
+        MainWindow.setStyleSheet("QMainWindow{\n"
+"background-color: #2B2B2B;\n"
+"}")
+        MainWindow.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(66, 66, 66))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
@@ -95,16 +98,16 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(52, 52, 52))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Mid, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(76, 101, 150))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Highlight, brush)
-        brush = QtGui.QBrush(QtGui.QColor(66, 66, 66))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
@@ -113,10 +116,10 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(52, 52, 52))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Mid, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(76, 101, 150))
@@ -125,7 +128,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(66, 66, 66))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
@@ -140,21 +143,64 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(20, 20, 20))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(43, 43, 43))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
         self.centralwidget.setPalette(palette)
+        self.centralwidget.setStyleSheet("QWidget{\n"
+"background-color: #2B2B2B;\n"
+"}")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_4.setContentsMargins(-1, 0, -1, 0)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.frame_4 = QtWidgets.QFrame(parent=self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
+        self.frame_4.setSizePolicy(sizePolicy)
+        self.frame_4.setMinimumSize(QtCore.QSize(200, 0))
+        self.frame_4.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.frame_4)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.label = QtWidgets.QLabel(parent=self.frame_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setMaximumSize(QtCore.QSize(60, 60))
+        self.label.setStyleSheet("\n"
+"    margin: 0px;")
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("logoMI.png"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.horizontalLayout_10.addWidget(self.label)
+        self.label_3 = QtWidgets.QLabel(parent=self.frame_4)
+        self.label_3.setMinimumSize(QtCore.QSize(0, 0))
+        self.label_3.setMaximumSize(QtCore.QSize(150, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Comfortaa")
+        font.setPointSize(15)
+        font.setBold(True)
+        self.label_3.setFont(font)
+        self.label_3.setWordWrap(True)
+        self.label_3.setObjectName("label_3")
+        self.horizontalLayout_10.addWidget(self.label_3)
+        self.verticalLayout.addWidget(self.frame_4)
         self.label_2 = QtWidgets.QLabel(parent=self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Cantarell Light")
@@ -176,49 +222,12 @@ class Ui_MainWindow(object):
 "    font-family:\'Courier New\', Courier, monospace;\n"
 "    margin: 10px;\n"
 "margin-bottom: 0px;")
+        self.SearchBar.setInputMask("")
+        self.SearchBar.setText("")
         self.SearchBar.setFrame(True)
+        self.SearchBar.setClearButtonEnabled(False)
         self.SearchBar.setObjectName("SearchBar")
         self.verticalLayout.addWidget(self.SearchBar)
-        self.searchButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.searchButton.setEnabled(True)
-        font = QtGui.QFont()
-        font.setFamily("Courier New")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setStrikeOut(False)
-        self.searchButton.setFont(font)
-        self.searchButton.setStyleSheet("QPushButton{\n"
-"\n"
-"color: rgb(218, 218, 218);\n"
-"    background-color: rgba(0, 0, 0, 0.37);\n"
-"    padding: 7px 20px;\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    border-color: grey;\n"
-"    border-style:solid;\n"
-"    border-width: 1px;\n"
-"    border-radius: 15px;\n"
-"    font-family:\'Courier New\', Courier, monospace;\n"
-"    margin: 10px;\n"
-"    margin-top: 0px;\n"
-"}\n"
-"\n"
-":hover{\n"
-"background-color:black;\n"
-"}")
-        self.searchButton.setAutoDefault(False)
-        self.searchButton.setDefault(False)
-        self.searchButton.setFlat(False)
-        self.searchButton.setObjectName("searchButton")
-        self.verticalLayout.addWidget(self.searchButton)
-        self.label_3 = QtWidgets.QLabel(parent=self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Cantarell Light")
-        font.setPointSize(12)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName("label_3")
-        self.verticalLayout.addWidget(self.label_3)
         self.tagBox = QtWidgets.QComboBox(parent=self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Courier New")
@@ -242,48 +251,37 @@ class Ui_MainWindow(object):
         self.tagBox.setObjectName("tagBox")
         self.tagBox.addItem("")
         self.verticalLayout.addWidget(self.tagBox)
-        self.ManageTagsButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.searchButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.searchButton.setEnabled(True)
         font = QtGui.QFont()
         font.setFamily("Courier New")
+        font.setPointSize(10)
         font.setBold(True)
         font.setUnderline(False)
         font.setStrikeOut(False)
-        self.ManageTagsButton.setFont(font)
-        self.ManageTagsButton.setStyleSheet("QPushButton{\n"
-"\n"
-"color: rgb(218, 218, 218);\n"
-"    background-color: rgba(0, 0, 0, 0.37);\n"
+        self.searchButton.setFont(font)
+        self.searchButton.setStyleSheet(":hover{\n"
+"background-color:black;\n"
+"}\n"
+"QPushButton{\n"
+"    color: white;\n"
+"    background-color: #45CE7F;\n"
 "    padding: 7px 20px;\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    border-color: grey;\n"
+"    border-color: #45CE7F;\n"
 "    border-style:solid;\n"
 "    border-width: 1px;\n"
 "    border-radius: 15px;\n"
 "    font-family:\'Courier New\', Courier, monospace;\n"
 "    margin: 10px;\n"
 "    margin-top: 0px;\n"
-"}\n"
-"\n"
-":hover{\n"
-"background-color:black;\n"
 "}")
-        self.ManageTagsButton.setObjectName("ManageTagsButton")
-        self.verticalLayout.addWidget(self.ManageTagsButton)
-        self.label = QtWidgets.QLabel(parent=self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
-        self.label.setMaximumSize(QtCore.QSize(200, 65))
-        self.label.setStyleSheet("\n"
-"    margin: 10px;")
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("logoMI-Text.png"))
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
+        self.searchButton.setAutoDefault(False)
+        self.searchButton.setDefault(False)
+        self.searchButton.setFlat(False)
+        self.searchButton.setObjectName("searchButton")
+        self.verticalLayout.addWidget(self.searchButton)
         spacerItem = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         self.notifFrame = QtWidgets.QFrame(parent=self.centralwidget)
@@ -361,6 +359,36 @@ class Ui_MainWindow(object):
         self.notifDelButton.setObjectName("notifDelButton")
         self.horizontalLayout_5.addWidget(self.notifDelButton)
         self.verticalLayout.addWidget(self.notifFrame)
+        self.ManageTagsButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        self.ManageTagsButton.setFont(font)
+        self.ManageTagsButton.setStyleSheet("QPushButton{\n"
+"\n"
+"color: rgb(218, 218, 218);\n"
+"    background-color: rgba(0, 0, 0, 0.37);\n"
+"    padding: 7px 20px;\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    border-color: grey;\n"
+"    border-style:solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 15px;\n"
+"    font-family:\'Courier New\', Courier, monospace;\n"
+"    margin: 10px;\n"
+"    margin-top: 0px;\n"
+"}\n"
+"\n"
+":hover{\n"
+"background-color:black;\n"
+"}")
+        icon = QtGui.QIcon.fromTheme("go-next")
+        self.ManageTagsButton.setIcon(icon)
+        self.ManageTagsButton.setObjectName("ManageTagsButton")
+        self.verticalLayout.addWidget(self.ManageTagsButton)
         self.openfolderbutton = QtWidgets.QPushButton(parent=self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Courier New")
@@ -385,6 +413,8 @@ class Ui_MainWindow(object):
 ":hover{\n"
 "background-color:black;\n"
 "}")
+        icon = QtGui.QIcon.fromTheme("folder")
+        self.openfolderbutton.setIcon(icon)
         self.openfolderbutton.setObjectName("openfolderbutton")
         self.verticalLayout.addWidget(self.openfolderbutton)
         self.progressBar = QtWidgets.QProgressBar(parent=self.centralwidget)
@@ -405,7 +435,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(33, 33, 33))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(39, 39, 39))
@@ -417,10 +447,10 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(33, 33, 33))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(33, 33, 33))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
@@ -429,7 +459,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(33, 33, 33))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(39, 39, 39))
@@ -441,10 +471,10 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(33, 33, 33))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(33, 33, 33))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
@@ -453,7 +483,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(33, 33, 33))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(39, 39, 39))
@@ -465,10 +495,10 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(33, 33, 33))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(36, 36, 36))
+        brush = QtGui.QBrush(QtGui.QColor(33, 33, 33))
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
@@ -477,7 +507,7 @@ class Ui_MainWindow(object):
         self.tablist.setPalette(palette)
         self.tablist.setAutoFillBackground(False)
         self.tablist.setStyleSheet("color: white;\n"
-"background-color: #242424;\n"
+"background-color:#212121;\n"
 "border-radius: 15px;")
         self.tablist.setTabPosition(QtWidgets.QTabWidget.TabPosition.West)
         self.tablist.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
@@ -499,7 +529,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignTop)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 976, 504))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 982, 525))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
@@ -573,6 +603,8 @@ class Ui_MainWindow(object):
         self.openFolderButton.setStyleSheet(":hover{\n"
 "background-color:black;\n"
 "}")
+        icon = QtGui.QIcon.fromTheme("folder-open")
+        self.openFolderButton.setIcon(icon)
         self.openFolderButton.setObjectName("openFolderButton")
         self.horizontalLayout_3.addWidget(self.openFolderButton)
         self.delOBJButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
@@ -586,6 +618,8 @@ class Ui_MainWindow(object):
 "background-color:black;\n"
 "border-color:#A40000;\n"
 "}")
+        icon = QtGui.QIcon.fromTheme("edit-delete")
+        self.delOBJButton.setIcon(icon)
         self.delOBJButton.setObjectName("delOBJButton")
         self.horizontalLayout_3.addWidget(self.delOBJButton)
         self.back2listButton = QtWidgets.QPushButton(parent=self.horizontalWidget)
@@ -598,6 +632,8 @@ class Ui_MainWindow(object):
         self.back2listButton.setStyleSheet(":hover{\n"
 "background-color:black;\n"
 "}")
+        icon = QtGui.QIcon.fromTheme("go-previous")
+        self.back2listButton.setIcon(icon)
         self.back2listButton.setObjectName("back2listButton")
         self.horizontalLayout_3.addWidget(self.back2listButton)
         self.verticalLayout_5.addWidget(self.horizontalWidget)
@@ -905,6 +941,8 @@ class Ui_MainWindow(object):
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.back2listButton_2.setFont(font)
+        icon = QtGui.QIcon.fromTheme("go-previous")
+        self.back2listButton_2.setIcon(icon)
         self.back2listButton_2.setObjectName("back2listButton_2")
         self.horizontalLayout_4.addWidget(self.back2listButton_2)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -1096,6 +1134,8 @@ class Ui_MainWindow(object):
         font.setUnderline(False)
         font.setStrikeOut(False)
         self.TMClearFieldsButton.setFont(font)
+        icon = QtGui.QIcon.fromTheme("edit-clear")
+        self.TMClearFieldsButton.setIcon(icon)
         self.TMClearFieldsButton.setObjectName("TMClearFieldsButton")
         self.gridLayout.addWidget(self.TMClearFieldsButton, 2, 1, 1, 1)
         self.verticalLayout_7.addWidget(self.frame_3)
@@ -1129,11 +1169,13 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1248, 20))
+        self.menubar.setStyleSheet("background-color: #2B2B2B;")
         self.menubar.setObjectName("menubar")
         self.menutool = QtWidgets.QMenu(parent=self.menubar)
         self.menutool.setObjectName("menutool")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
+        self.statusbar.setSizeGripEnabled(False)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.actionimport = QtGui.QAction(parent=MainWindow)
@@ -1162,22 +1204,22 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MatterIndex"))
-        self.label_2.setText(_translate("MainWindow", "Find by name:"))
-        self.searchButton.setText(_translate("MainWindow", "Search"))
-        self.label_3.setText(_translate("MainWindow", "Tags:"))
+        self.label_3.setText(_translate("MainWindow", "Matter Index"))
+        self.label_2.setText(_translate("MainWindow", "Filter:"))
         self.tagBox.setItemText(0, _translate("MainWindow", "All"))
-        self.ManageTagsButton.setText(_translate("MainWindow", "Manage →"))
+        self.searchButton.setText(_translate("MainWindow", "Search"))
         self.notifIcon.setText(_translate("MainWindow", "ⅰ"))
         self.notifText.setText(_translate("MainWindow", "Notification"))
         self.notifDelButton.setText(_translate("MainWindow", "✕"))
-        self.openfolderbutton.setText(_translate("MainWindow", "Open root folder"))
+        self.ManageTagsButton.setText(_translate("MainWindow", "Manage tags"))
+        self.openfolderbutton.setText(_translate("MainWindow", "Select database"))
         self.tablist.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.tablist.setTabText(self.tablist.indexOf(self.List), _translate("MainWindow", "List"))
         self.OBJObjectName.setText(_translate("MainWindow", "Object Name"))
         self.OBJObjectDesc.setText(_translate("MainWindow", "Object desc"))
         self.openFolderButton.setText(_translate("MainWindow", "Open folder"))
         self.delOBJButton.setText(_translate("MainWindow", "Delete Object"))
-        self.back2listButton.setText(_translate("MainWindow", "← Back to list"))
+        self.back2listButton.setText(_translate("MainWindow", "Back to list"))
         self.DestinationFolderButton.setText(_translate("MainWindow", "Destination folder"))
         self.ExportButton.setText(_translate("MainWindow", "Export"))
         self.label_8.setText(_translate("MainWindow", "Tags:"))
@@ -1187,8 +1229,8 @@ class Ui_MainWindow(object):
         self.OBJ_AddTagToObjectButton.setText(_translate("MainWindow", "Add"))
         self.tablist.setTabText(self.tablist.indexOf(self.Object), _translate("MainWindow", "Objet"))
         self.label_4.setText(_translate("MainWindow", "Tag Management:"))
-        self.back2listButton_2.setText(_translate("MainWindow", "← Back to list"))
-        self.label_10.setText(_translate("MainWindow", "Tag:"))
+        self.back2listButton_2.setText(_translate("MainWindow", "Back to list"))
+        self.label_10.setText(_translate("MainWindow", "Select tag:"))
         self.TMSaveButton.setText(_translate("MainWindow", "Save"))
         self.TMDeleteButton.setText(_translate("MainWindow", "Delete"))
         self.label_6.setText(_translate("MainWindow", "Define color:"))

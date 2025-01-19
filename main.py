@@ -29,6 +29,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         self.searchButton.clicked.connect(self.doSearch)
+        self.SearchBar.returnPressed.connect(self.doSearch)
         self.notifFrame.setVisible(False)
         self.refrechApp()
         self.actionRefresh_app.triggered.connect(self.manualRefreshApp)
@@ -47,6 +48,22 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.TMClearFieldsButton.clicked.connect(self.clearTagManagementFields)
         self.OBJ_AddTagToObjectButton.clicked.connect(self.addTagToObject)
         self.TMDeleteButton.clicked.connect(self.deleteTag)
+
+
+
+    def checkTagFile(self):
+        print("## Checking if tag.json file exist...")
+        currentDatabase = open("variables/currentDatabase.txt", "r")
+        sourceDirectory = currentDatabase.read()
+        currentDatabase.close()
+        filesList = os.listdir(sourceDirectory)
+        if str("tags.json") in filesList:
+            print("--> tags.json found, finished")
+        else:
+            print("--> tags.json not found, creating a new one...")
+            shutil.copy("tagsJSON-template/tags.json", sourceDirectory)
+            print("--> tags.json created, finished")
+        print("")
 
 
 
@@ -140,8 +157,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
     def displayTag(self, tagName):
+        currentDatabase = open("variables/currentDatabase.txt", "r")
+        sourceDirectory = currentDatabase.read()
+        currentDatabase.close()
         try:
-            with open("tags/tags.json", "r") as file:
+            with open(f"{sourceDirectory}/tags.json", "r") as file:
                 data = json.load(file)
         except FileNotFoundError:
             print(f"Tag file not found")
@@ -196,7 +216,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         CurrentOBJ.close()
         print(tagName)
 
-        with open("tags/tags.json", 'r') as file:
+        currentDatabase = open("variables/currentDatabase.txt", "r")
+        sourceDirectory = currentDatabase.read()
+        currentDatabase.close()
+
+        with open(f"{sourceDirectory}/tags.json", 'r') as file:
             data = json.load(file)
 
         for tag in data['tags']:
@@ -210,7 +234,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             print(f"Tag '{tagName}' not found in the JSON file.")
 
-        with open("tags/tags.json", 'w') as file:
+        with open(f"{sourceDirectory}/tags.json", 'w') as file:
             json.dump(data, file, indent=4)
 
         self.openSelectedObject(ObjPath)
@@ -219,7 +243,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def deleteTag(self):
         tagName = self.TMTagBox.currentText()
 
-        with open("tags/tags.json", 'r') as file:
+        currentDatabase = open("variables/currentDatabase.txt", "r")
+        sourceDirectory = currentDatabase.read()
+        currentDatabase.close()
+
+        with open(f"{sourceDirectory}/tags.json", 'r') as file:
             data = json.load(file)
 
         tagFound = False
@@ -233,7 +261,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         if not tagFound:
             print(f"Tag '{tagName}' not found in the JSON file.")
 
-        with open("tags/tags.json", 'w') as file:
+        with open(f"{sourceDirectory}/tags.json", 'w') as file:
             json.dump(data, file, indent=4)
 
         self.clearTagManagementFields()
@@ -247,6 +275,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         ObjPath = CurrentOBJ.read()
         CurrentOBJ.close()
 
+        currentDatabase = open("variables/currentDatabase.txt", "r")
+        sourceDirectory = currentDatabase.read()
+        currentDatabase.close()
+
         alreadyExist = self.OBJWidgetContainer.findChild(QPushButton, f"TagEditButton_{s}")
         print(f"Already exist ? -> {alreadyExist}")
         if alreadyExist:
@@ -254,7 +286,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             self.displayTag(s)
 
-            with open("tags/tags.json", "r") as file:
+            with open(f"{sourceDirectory}/tags.json", "r") as file:
                 data = json.load(file)
 
             for tag in data["tags"]:
@@ -267,15 +299,27 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             else:
                 print(f"ERR: Tag '{s}' not found")
 
-            with open("tags/tags.json", "w") as file:
+            with open(f"{sourceDirectory}/tags.json", "w") as file:
                 json.dump(data, file, indent=4)
 
             print("Tags.json Updated")
 
 
     def openThingsFolder(self):
-        opener = "open" if sys.platform == "darwin" else "xdg-open"
-        subprocess.call([opener, "things"])
+        directory = QFileDialog.getExistingDirectory(self, "Select database", "",
+                                                     options=QFileDialog.Option.ShowDirsOnly)
+        if directory:
+            print(f"Selected database: {directory}")
+            self.displayNotif(f"Selected database", 1)
+            currentDatabase = open("variables/currentDatabase.txt", "w")
+            currentDatabase.write(directory)
+            currentDatabase.close()
+            self.refrechApp("")
+
+        else:
+            self.displayNotif(f"No database selected", 0)
+
+
 
 
     def delOBJ(self):
@@ -317,11 +361,17 @@ f"    background-color: {color.name()};\n"
 "\u007d")
 
     def updateTagManagement(self, isManual=None):
+        print("## Importing tags into the UI from tag.json...")
         NewTagName = self.TMNameEditor.text()
         NewTagColor = self.TMColorHexEditor.text()
+
+        currentDatabase = open("variables/currentDatabase.txt", "r")
+        sourceDirectory = currentDatabase.read()
+        currentDatabase.close()
+
         if NewTagName:
             try:
-                with open("tags/tags.json", 'r') as file:
+                with open(f"{sourceDirectory}/tags.json", 'r') as file:
                     data = json.load(file)
             except FileNotFoundError:
                 data = {"tags": []}
@@ -339,7 +389,7 @@ f"    background-color: {color.name()};\n"
 
             data['tags'].append(new_tag)
 
-            with open("tags/tags.json", 'w') as file:
+            with open(f"{sourceDirectory}/tags.json", 'w') as file:
                 json.dump(data, file, indent=4)
 
         else:
@@ -350,15 +400,14 @@ f"    background-color: {color.name()};\n"
         self.TMTagBox.clear()
         self.OBJTagBox.clear()
 
-        with open("tags/tags.json", "r") as tagListFile:
+        with open(f"{sourceDirectory}/tags.json", "r") as tagListFile:
             tagData = json.load(tagListFile)
 
         tagList = tagData.get("tags", [])
         sortedTags = sorted(tagList, key=lambda tag: tag['name'].lower())
 
-        print("Tags detected ↓")
+        print("--> Reading file...")
         for tag in sortedTags:
-            print(tag['name'])
             name = tag['name']
             color = tag.get('color', '#2B2B2B')
             self.tagBox.addItem(name)
@@ -369,12 +418,20 @@ f"    background-color: {color.name()};\n"
             self.tagBox.setItemData(itemIndex, qColor, Qt.ItemDataRole.BackgroundRole)
             self.TMTagBox.setItemData(itemIndex, qColor, Qt.ItemDataRole.BackgroundRole)
             self.OBJTagBox.setItemData(itemIndex, qColor, Qt.ItemDataRole.BackgroundRole)
-            print(f"Tag: {name}, Color: {color}")
+            print(f"-       Tag Name: {name}, Color: {color}")
+
+        print("--> All tags are imported, finished")
+        print("")
 
     def fillTagManagementFields(self, s):
         TagColor = "#45CE7F"
+
+        currentDatabase = open("variables/currentDatabase.txt", "r")
+        sourceDirectory = currentDatabase.read()
+        currentDatabase.close()
+
         try:
-            with open("tags/tags.json", "r") as file:
+            with open(f"{sourceDirectory}/tags.json", "r") as file:
                 data = json.load(file)
         except FileNotFoundError:
             print(f"Tag file not found")
@@ -410,6 +467,8 @@ f"    background-color: {TagColor};\n"
 
     def refrechApp(self, filter = ""):
         print("--Start app refresh--")
+        print("")
+        self.checkTagFile()
         #Clear SearchBar
         self.SearchBar.setText("")
         #Clear list:
@@ -426,23 +485,34 @@ f"    background-color: {TagColor};\n"
         matterNamesList = []
         imagePathList = []
         contentList = []
-        print("List of files found → ")
-        for root, folders, files in os.walk("things"):
-            #print(f"root -> {root} ; subfolder -> {folders} ; files -> {files}")
+
+        currentDatabase = open("variables/currentDatabase.txt", "r")
+        sourceDirectory = currentDatabase.read()
+        currentDatabase.close()
+
+        print("## Search for files...")
+        for root, folders, files in os.walk(sourceDirectory):
             folders.sort(key=str.lower)
+            if sourceDirectory == root:
+                continue
+
             if not files:
                 continue
             filterByName = [f for f in files if filter.lower() in f.lower()]
             if not filterByName:
                 continue
 
-            filterTag = self.tagBox.currentText()
-            with open("tags/tags.json", 'r') as file:
-                data = json.load(file)
             tagFilterObjects = []
-            for i, tag in enumerate(data['tags']):
-                if tag['name'] == filterTag:
-                    tagFilterObjects = tag['Objects']
+            try:
+                filterTag = self.tagBox.currentText()
+                with open(f"{sourceDirectory}/tags.json", 'r') as file:
+                    data = json.load(file)
+                for i, tag in enumerate(data['tags']):
+                    if tag['name'] == filterTag:
+                        tagFilterObjects = tag['Objects']
+            except:
+                tagFilterObjects.append("allObjects")
+                print("ERROR: Tags file not found")
 
             if not str(root) in tagFilterObjects and not str("allObjects") in tagFilterObjects:
                 continue
@@ -454,7 +524,6 @@ f"    background-color: {TagColor};\n"
 
             matterName = os.path.basename(root)
             matterNamesList.append(matterName)
-            print(matterName)
 
             KeyWords = ["basecolor", "color", "diffuse", "albedo", "base_color", "diff"]
 
@@ -475,14 +544,8 @@ f"    background-color: {TagColor};\n"
             contentList.append(len(ImageList))
 
 
-        print(thingsQuantity,"textures found")
-        print("List of path:",imagePathList)
-        #del matterNamesList[0]
-        print(len(matterNamesList))
-        print(matterNamesList)
-        print(len(imagePathList))
-        print(len(contentList))
-
+        print(f"--> Search finished, {thingsQuantity} items found")
+        print("")
 
         WidgetCycles = 0
         for matterName in matterNamesList:
@@ -492,7 +555,11 @@ f"    background-color: {TagColor};\n"
             ui_matterWidget.matterName.setText(matterName)
             #let's create a thumbnail:
             thumbnail_filename = f'thumbnail/thumb_{matterName}.png'
-            objThumbnail = Image.open(imagePathList[WidgetCycles])
+            try:
+                objThumbnail = Image.open(imagePathList[WidgetCycles])
+            except:
+                objThumbnail = Image.open("no_image.png")
+
             Size = (100, 100)
             objThumbnail.thumbnail(Size)
             objThumbnail.save(thumbnail_filename)
@@ -505,23 +572,26 @@ f"    background-color: {TagColor};\n"
             ui_matterWidget.openMatterButton.setText("Open")
             ui_matterWidget.openMatterButton.setObjectName(f"openMatterButton{WidgetCycles}")
             #ui_matterWidget.openMatterButton.clicked.connect(lambda checked, index=WidgetCycles+1: self.openObject(index))
-            ui_matterWidget.openMatterButton.clicked.connect(lambda checked, OBJPath = str(f"things/{matterName}"): self.openSelectedObject(OBJPath))
-            print(f"Root name: {root}")
+            ui_matterWidget.openMatterButton.clicked.connect(lambda checked, OBJPath = str(f"{sourceDirectory}/{matterName}"): self.openSelectedObject(OBJPath))
             self.scrollAreaWidgetContents.layout().addWidget(matterWidget)
             WidgetCycles += 1
-           # print(f"QFrame \u007b background-image: url({imagePathList[WidgetCycles]});\u007d")
 
         getstartinfo = open("variables/startinfo.txt")
         startinfo = getstartinfo.read()
         getstartinfo.close()
-        print("startinfo=",str(startinfo))
         getstartinfo = open("variables/startinfo.txt", "w")
         getstartinfo.write(str(1))
         getstartinfo.close()
         # Update tag combobox
-        self.updateTagManagement(False)
+        try:
+            self.updateTagManagement(False)
+        except:
+            print("Tag Manager Error")
+
 
         print("--Successful app refresh--")
+        print("")
+
 
 
     def manualRefreshApp(self):
@@ -568,7 +638,11 @@ f"    background-color: {TagColor};\n"
         self.OBJObjectDesc.setText(objectInfo)
 
         #Get list of tags
-        with open("tags/tags.json", "r") as file:
+        currentDatabase = open("variables/currentDatabase.txt", "r")
+        sourceDirectory = currentDatabase.read()
+        currentDatabase.close()
+
+        with open(f"{sourceDirectory}/tags.json", "r") as file:
             data = json.load(file)
         listOfTags = [
             tag["name"]
