@@ -798,7 +798,8 @@ background-color:black;
            <string>Manage tags</string>
           </property>
           <property name="icon">
-           <iconset theme="go-next"/>
+           <iconset theme="go-next">
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
@@ -835,7 +836,8 @@ background-color:black;
            <string>Select database</string>
           </property>
           <property name="icon">
-           <iconset theme="folder"/>
+           <iconset theme="folder">
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
@@ -1154,7 +1156,7 @@ border-radius: 15px;</string>
                <x>0</x>
                <y>0</y>
                <width>982</width>
-               <height>525</height>
+               <height>545</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_3"/>
@@ -1286,7 +1288,8 @@ background-color:black;
                   <string>Open folder</string>
                  </property>
                  <property name="icon">
-                  <iconset theme="folder-open"/>
+                  <iconset theme="folder-open">
+                   <normaloff>.</normaloff>.</iconset>
                  </property>
                 </widget>
                </item>
@@ -1310,7 +1313,8 @@ border-color:#A40000;
                   <string>Delete Object</string>
                  </property>
                  <property name="icon">
-                  <iconset theme="edit-delete"/>
+                  <iconset theme="edit-delete">
+                   <normaloff>.</normaloff>.</iconset>
                  </property>
                 </widget>
                </item>
@@ -1333,7 +1337,8 @@ background-color:black;
                   <string>Back to list</string>
                  </property>
                  <property name="icon">
-                  <iconset theme="go-previous"/>
+                  <iconset theme="go-previous">
+                   <normaloff>.</normaloff>.</iconset>
                  </property>
                 </widget>
                </item>
@@ -1838,7 +1843,8 @@ color: rgb(218, 218, 218);
                 <string>Back to list</string>
                </property>
                <property name="icon">
-                <iconset theme="go-previous"/>
+                <iconset theme="go-previous">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -2173,7 +2179,8 @@ color: rgb(218, 218, 218);
                 <string>Clear Fields</string>
                </property>
                <property name="icon">
-                <iconset theme="edit-clear"/>
+                <iconset theme="edit-clear">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -2236,26 +2243,6 @@ color: rgb(218, 218, 218);
      </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1248</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: #2B2B2B;</string>
-   </property>
-   <widget class="QMenu" name="menutool">
-    <property name="title">
-     <string>Tool</string>
-    </property>
-    <addaction name="actionRefresh_app"/>
-   </widget>
-   <addaction name="menutool"/>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="sizeGripEnabled">

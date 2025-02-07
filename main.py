@@ -32,7 +32,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.SearchBar.returnPressed.connect(self.doSearch)
         self.notifFrame.setVisible(False)
         self.refrechApp()
-        self.actionRefresh_app.triggered.connect(self.manualRefreshApp)
         self.back2listButton.clicked.connect(self.back2list)
         self.back2listButton_2.clicked.connect(self.back2list)
         self.ManageTagsButton.clicked.connect(self.openManageTagsTab)
@@ -67,9 +66,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             print("")
         except:
             print("--> No Database selected, skip")
-
-
-
+            self.displayNotif("Please select a database ↓", 0)
 
 
     def setDestinationFolder(self):
@@ -115,6 +112,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
             self.displayNotif(f"Files exported !", 1)
 
+
     def displayNotif(self, text, state):
         self.notifText.setText(text)
         if state == 1:
@@ -156,6 +154,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def back2list(self):
         self.tablist.setCurrentIndex(0)
         print("Button pressed: Back to list")
+
 
     def openManageTagsTab(self):
         self.tablist.setCurrentIndex(2)
@@ -214,6 +213,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.TagEditButton.clicked.connect(lambda checked, tag = tagName: self.removeTag(tag))
                 self.horizontalLayout_9.addWidget(self.TagEditButton)
                 # self.horizontalLayout_7.addWidget(self.OBJWidgetContainer)
+
 
     def removeTag(self, tagName):
         CurrentOBJ = open("variables/currentOBJ.txt")
@@ -319,12 +319,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             currentDatabase = open("variables/currentDatabase.txt", "w")
             currentDatabase.write(directory)
             currentDatabase.close()
-            self.refrechApp("")
+            self.refrechApp()
+            self.undisplayNotiframe()
 
         else:
             self.displayNotif(f"No database selected", 0)
-
-
 
 
     def delOBJ(self):
@@ -364,6 +363,7 @@ f"    background-color: {color.name()};\n"
 "    font-family:\'Courier New\', Courier, monospace;\n"
 "    margin: 10px;\n"
 "\u007d")
+
 
     def updateTagManagement(self, isManual=None):
         print("## Importing tags into the UI from tag.json...")
@@ -428,6 +428,7 @@ f"    background-color: {color.name()};\n"
         print("--> All tags are imported, finished")
         print("")
 
+
     def fillTagManagementFields(self, s):
         TagColor = "#45CE7F"
 
@@ -464,10 +465,10 @@ f"    background-color: {TagColor};\n"
 "\u007d")
         print(f"background-color:{s};")
 
+
     def clearTagManagementFields(self):
         self.TMNameEditor.setText("")
         self.TMColorHexEditor.setText("")
-
 
 
     def refrechApp(self, filter = ""):
@@ -593,15 +594,10 @@ f"    background-color: {TagColor};\n"
         except:
             print("Tag Manager Error")
 
-
+        if filter:
+            self.displayNotif(f"{thingsQuantity + 1} objects found for {filter}", 1)
         print("--Successful app refresh--")
         print("")
-
-
-
-    def manualRefreshApp(self):
-        self.refrechApp()
-        self.displayNotif("Refreshed !", 1)
 
 
     def openSelectedObject(self, ObjPath):
@@ -693,12 +689,11 @@ f"    background-color: {TagColor};\n"
         self.progressBar.setValue(100)
 
 
-
     def doSearch(self):
         content = self.SearchBar.text()
         print("Search executed:", content)
         self.SearchBar.setText("")
-        self.displayNotif("Search results:", 1)
+        self.undisplayNotiframe()
         # clear list:
         layout = self.scrollAreaWidgetContents.layout()
         if layout:
@@ -715,7 +710,6 @@ f"    background-color: {TagColor};\n"
 app = QtWidgets.QApplication(sys.argv)
 splash = LaunchFrame()
 splash.show()
-#time.sleep(0.5)
 window = MainWindow()
 splash.finish(window)
 window.show()
